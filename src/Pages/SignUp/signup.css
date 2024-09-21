@@ -119,3 +119,8 @@
         margin-top:5rem;
     }
   }
+
+  .error-message{
+    color: red;
+    font-size: 15px;
+  }
