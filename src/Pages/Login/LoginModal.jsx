@@ -2,7 +2,6 @@
 import React, { useState } from 'react';
 import './LoginModal.css'; // Add styles for the modal
 import WhiteBg from "../WhiteBg/WhiteBg";
-import ieeelogo from "../../assets/Images/sb orange white.png";
 import Cornericon from '../RCornericon/RCornericon'
 const LoginModal = ({ closeModal }) => {
   const [username, setUsername] = useState('');
