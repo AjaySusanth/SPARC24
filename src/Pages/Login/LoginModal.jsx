@@ -1,8 +1,7 @@
 // src/components/LoginModal.js
 import React, { useState } from 'react';
 import './LoginModal.css'; // Add styles for the modal
-//import WhiteBg from "../WhiteBg/WhiteBg";
-//import ieeelogo from "../../assets/Images/sb orange white.png";
+import WhiteBg from "../WhiteBg/WhiteBg";
 import Cornericon from '../RCornericon/RCornericon'
 import { supabase } from '../../libs/helper/supabaseClient';
 import { Link, useNavigate } from 'react-router-dom';
