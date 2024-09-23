@@ -22,13 +22,13 @@ function Tickets() {
           </div>
           <div className="ticket t3">
             <img src={t3} alt='tkt-icon' className='tkt-icon'></img>
-            <h2>NON IEEE MEMBERS (MACE)</h2>
+            <h2>NON IEEE MEMBERS</h2>
             <span className='price'>₹499</span>
             <button className='reg-btn'>Register Now↗</button>
           </div>
           <div className="ticket t2">
             <img src={t2} alt='tkt-icon' className='tkt-icon'></img>
-            <h2>NON IEEE MEMBERS</h2>
+            <h2>NON  MACIANS</h2>
             <span className='price'>₹599</span>
             <button className='reg-btn'>Register Now↗</button>
           </div>
