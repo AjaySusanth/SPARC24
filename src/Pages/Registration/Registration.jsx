@@ -27,12 +27,12 @@ const ticketOptions = {
 
 function Registration() {
 
-  //CURRENTLY DOING: handleFileChange, test it
 
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
     name: '',
+    mobile:'',
     yearOfStudy: '',
     college: '',
     department: '',
@@ -97,7 +97,7 @@ function Registration() {
     e.preventDefault();
     let screenshotURL = null
     setError(null)
-    if (!formData.name || !formData.yearOfStudy || !formData.college || !formData.ticketType || !formData.department || !file) {
+    if (!formData.name || !formData.mobile || !formData.yearOfStudy || !formData.college || !formData.ticketType || !formData.department || !file) {
       setError('Please fill all the fields and upload the screenshot')
       return;
     }
@@ -127,7 +127,40 @@ function Registration() {
       //console.log("URL",screenshotURL)
 
     };
-    console.log('Form submitted:', formData); 
+
+    try {
+      const {data,error} = await supabase
+      .from('registered-users')
+      .insert([
+        {
+          name:formData.name,
+          email:user.email,
+          mobile:formData.mobile,
+          college:formData.college,
+          department:formData.department,
+          year:formData.yearOfStudy,
+          ticket:formData.ticketType,
+          membership_id:formData.membershipId,
+          screenshot_url:screenshotURL,
+          registered:true
+        }
+      ])
+      .select()
+
+      
+      if(error) {
+        console.error("Supabase error",error)
+        setError("Error submitting form,try again later")
+        return;
+      }
+
+      console.log("Registered successfully",data)
+
+    } catch (err) {
+      console.error("Submission error:", err);
+      setError("Unexpected error, try again later");
+
+    }
   }
 
 //console.log(formData)
@@ -154,6 +187,19 @@ function Registration() {
               required
             />
           </div>
+
+          <label htmlFor="mobile">Mobile</label>
+          <div className="form-field-container">
+            <input
+              type="text"
+              id="mobile"
+              name="mobile"
+              value={formData.mobile}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
 
           <label htmlFor="college">College</label>
           <div className="form-field-container">
