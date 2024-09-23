@@ -8,6 +8,8 @@ import qr from '../../assets/Images/qrcode.jpg'
 import { useAuth } from '../../libs/helper/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
+import Registered from './Registered';
+import Verfied from './Verfied';
 
 const ticketOptions = {
   'ieee': {
@@ -46,8 +48,40 @@ function Registration() {
   const [file,setFile] = useState(null)
   const [fileError,setFileError] = useState(null)
   const [loading,setLoading] = useState(true)
+  const [isRegistered,setIsRegistered] = useState(false)
+  const [isVerified,setIsVerified] = useState(false)
+
 
   const {user,loading:authLoading} = useAuth()
+
+  
+  // Checking if user has already registered
+  const checkRegistration = async() => {
+    try {
+      const {data,error} = await supabase
+      .from('registered-users')
+      .select('*')
+      .eq('user_id',user.id)
+  
+      if(error) {
+        console.log("Error fetching registration data",error)
+        return;
+      }
+
+      if (data.length>0) {
+        setIsRegistered((data[0].registered))
+        setIsVerified((data[0].verified))
+      }
+       console.log(data[0])
+    } catch (error) {
+      console.error("Unexpected error",error.message)
+      setError("Unexpected error,try again later")
+    }
+    finally {
+      setLoading(false)
+    }
+  
+  }
 
   useEffect(()=>{
     if(!user && !authLoading){
@@ -56,8 +90,7 @@ function Registration() {
     else if (user)
     {
       console.log(user)
-      setLoading(false)
-      //checkRegistration()
+      checkRegistration()
     }
   },[user,authLoading])
 
@@ -166,6 +199,10 @@ function Registration() {
 //console.log(formData)
 
   if (loading) return <p className='loader'>Loading.....</p>
+  if(isVerified) return <Verfied/>
+
+  if(isRegistered) return <Registered/>
+
 
   return (
     <div className="registration">
