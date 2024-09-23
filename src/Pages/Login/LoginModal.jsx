@@ -1,85 +1,129 @@
 // src/components/LoginModal.js
 import React, { useState } from 'react';
-import './LoginModal.css'; // Add styles for the modal
-import WhiteBg from "../WhiteBg/WhiteBg";
+import './LoginModal.css'; 
 import Cornericon from '../RCornericon/RCornericon'
+import WhiteBg from "../WhiteBg/WhiteBg";
+import GoogleLogo from '../../assets/Images/devicon_google.svg';
 import { supabase } from '../../libs/helper/supabaseClient';
-import { Link, useNavigate } from 'react-router-dom';
-const LoginModal = ({ closeModal }) => {
+import { useNavigate } from 'react-router-dom';
 
-  //TODO: Redirect based on Register intent | Google github sign in implementation | Loader
+const LoginModal = () => {
+  // State for Login
+  const [loginEmail, setLoginEmail] = useState('');
+  const [loginPassword, setLoginPassword] = useState('');
+  const [loginError, setLoginError] = useState(null);
 
-  const [email,setEmail] = useState('')
-  const [password, setPassword] = useState('');
-  const [error,setError] = useState(null)
+  // State for Sign Up
+  const [signupName, setSignupName] = useState('');
+  const [signupEmail, setSignupEmail] = useState('');
+  const [signupPassword, setSignupPassword] = useState('');
+  const [signupError, setSignupError] = useState(null);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const handleSubmit = async(e) => {
+  // Handle Login
+  const handleLoginSubmit = async (e) => {
     e.preventDefault();
-    setError(null)
-    if(!email || !password ) {
-      setError('All fields are required')
+    setLoginError(null);
+    if (!loginEmail || !loginPassword) {
+      setLoginError('All fields are required');
       return;
     }
     try {
-      const {data,error} = await supabase.auth.signInWithPassword({
-        email:email,
-        password:password
-      })
-
-      if(error) throw error
-      navigate('/')
+      const { data, error } = await supabase.auth.signInWithPassword({
+        email: loginEmail,
+        password: loginPassword,
+      });
+      if (error) throw error;
+      navigate('/');
     } catch (error) {
-      console.error(error.message)
-      setError(error.message)
+      console.error(error.message);
+      setLoginError(error.message);
     }
   };
-/*
-  const googleSignUp = async(e) => {
-    e.preventDefault()
-    try {
-      const {data,error} = await supabase.auth.signInWithOAuth({
-        provider:'google',
-        options:{
-          redirectTo:'https://sparc-24.vercel.app/'
-        }
-      })
-      if(error) throw error;
-    } catch (error) {
-      console.log(error)
+
+  // Handle Sign Up
+  const handleSignupSubmit = async (e) => {
+    e.preventDefault();
+    setSignupError(null);
+    if (!signupName || !signupEmail || !signupPassword) {
+      setSignupError('All fields are required');
+      return;
     }
-  }
-    */
+    try {
+      const { data, error } = await supabase.auth.signUp({
+        email: signupEmail,
+        password: signupPassword,
+      });
+      if (error) throw error;
+      navigate('/');
+    } catch (error) {
+      console.error(error.message);
+      setSignupError(error.message);
+    }
+  };
+
+  // Handle Google Sign Up
+  const handleGoogleSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'google',
+        options: {
+          redirectTo: 'https://sparc-24.vercel.app/',
+        },
+      });
+      if (error) throw error;
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <div className="modal-overlay">
-    
-    <div className="modal"><Cornericon />
-       
-       <div className="insider">
+      <div className="modal">
+        <Cornericon />
+      
+          <div className="auth-container">
+            {/* Login Form */}
+            <div className="auth-form">
+              <h2>Login</h2>
+              <form onSubmit={handleLoginSubmit}>
+                <input
+                className='button1'
+                  type="text"
+                  placeholder="Email"
+                  value={loginEmail}
+                  onChange={(e) => setLoginEmail(e.target.value)}
+                />
+                <input
+                className='button1'
+                  type="password"
+                  placeholder="Password"
+                  value={loginPassword}
+                  onChange={(e) => setLoginPassword(e.target.value)}
+                />
+                {loginError && <p className="error-message">{loginError}</p>}
+                <button type="submit" className="submit">Login</button>
+              </form>
+            </div>
+            <div className="social-login">
+                <p>------------OR-------------</p>
+                <div className="social-icons">
+                  <button onClick={handleGoogleSignup} className="social-button">
+                    <img src={GoogleLogo} alt="Google Logo" />
+                  </button>
+                  <button onClick={() => {/* Add GitHub login handler */}} className="social-button">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" />
+                  </button>
+                </div>
+              </div>
+
+           
+          </div>
+      
         
-        <h2>Login</h2>
-        <form onSubmit={handleSubmit}>
-          <input
-            type="text"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          {
-            error && <p className='error-message'>{error}</p>
-          }
-          <button type="submit">Login</button>
-          <p>Already have an account? <Link to='/signup'>Sign up</Link></p>
-        </form>
-      </div></div>
+      </div>
     </div>
   );
 };
