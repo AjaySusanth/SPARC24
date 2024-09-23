@@ -86,7 +86,7 @@ const SignUp = () => {
           }
           <button type="submit" className="submitButton">Sign Up</button>
         </form>
-        <p className='redirect-login'>Already have an account?{" "}Login</p> 
+        <p className='redirect-login'>Already have an account? {" "}Login</p> 
         <div className="separatorContainer">
           <hr className="separator" />
           <span className="separatorText">OR</span>
