@@ -1,6 +1,6 @@
 import React from "react";
 import "./Memories.css";
-import memories from "../../assets/Images/memo.png";
+import memories from "../../assets/Images/memo (2).png";
 import memoriessmall1 from "../../assets/Images/memories small1.png";
 import memoriessmall2 from "../../assets/Images/sparc2 1.png";
 import memoriessmall3 from "../../assets/Images/sparc3 1.png";
