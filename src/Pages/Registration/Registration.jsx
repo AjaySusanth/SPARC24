@@ -1,10 +1,12 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Registration.css';
 import WhiteBg from '../WhiteBg/WhiteBg';
 import Cornericon from '../LCornericon/LCornericon';
 import Heading from '../Heading/Heading';
 import maceLogo from '../../assets/Images/mace logo white.png';
 import qr from '../../assets/Images/qrcode.jpg'
+import { useAuth } from '../../libs/helper/AuthContext';
+import { useNavigate } from 'react-router-dom';
 
 const ticketOptions = {
   'ieee': {
@@ -26,6 +28,8 @@ function Registration() {
 
   //CURRENTLY DOING: handleFileChange, test it
 
+  const navigate = useNavigate()
+
   const [formData, setFormData] = useState({
     name: '',
     yearOfStudy: '',
@@ -40,6 +44,21 @@ function Registration() {
   const [error,setError] = useState(null)
   const [file,setFile] = useState(null)
   const [fileError,setFileError] = useState(null)
+  const [loading,setLoading] = useState(true)
+
+  const {user,loading:authLoading} = useAuth()
+
+  useEffect(()=>{
+    if(!user && !authLoading){
+      navigate('/signup')
+    }
+    else if (user)
+    {
+      console.log(user)
+      setLoading(false)
+      //checkRegistration()
+    }
+  },[user,authLoading])
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -83,10 +102,12 @@ function Registration() {
         return;
       }
     console.log('Form submitted:', formData);
+    console.log(file)
   };
 
 //console.log(formData)
-//console.log(file)
+
+  if (loading) return <p className='loader'>Loading.....</p>
 
   return (
     <div className="registration">
