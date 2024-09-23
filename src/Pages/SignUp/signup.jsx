@@ -8,12 +8,11 @@ import { supabase } from '../../libs/helper/supabaseClient';
 
 const SignUp = () => {
 
-  //TODO: Redirect based on RegisterIntent | Add Name field to db | Already have a acc login redirect | Setup login Github provider | Add loader after handleSubmit
 
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
-  const [error,setError] = useState(null)
+  const [error,setError] = usenpState(null)
   //const [isRegisterIntent, setIsRegisterIntent] = useState(false);    
   // const location = useLocation()
   const navigate = useNavigate() 

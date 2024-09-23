@@ -1,9 +1,9 @@
 import React from "react";
 import "./Memories.css";
-import memories from "../../assets/Images/memories.png";
+import memories from "../../assets/Images/memo.png";
 import memoriessmall1 from "../../assets/Images/memories small1.png";
-import memoriessmall2 from "../../assets/Images/memories small2.png";
-import memoriessmall3 from "../../assets/Images/memories small3.png";
+import memoriessmall2 from "../../assets/Images/sparc2 1.png";
+import memoriessmall3 from "../../assets/Images/sparc3 1.png";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import WhiteBg from "../WhiteBg/WhiteBg";
 import Cornericon from '../RCornericon/RCornericon'
@@ -23,9 +23,7 @@ function Memories() {
         <img src={memoriessmall2} alt="memoriessmall" className="memoryimgsmall" />
         <img src={memoriessmall3} alt="memoriessmall" className="memoryimgsmall" />
 
-        <button onClick={() => window.open('https://sparc.ieeemace.org/', '_blank')}>
-          <i className="bi bi-play-circle-fill"></i> Know More
-        </button>
+       
         </div></WhiteBg>
       
     </>
