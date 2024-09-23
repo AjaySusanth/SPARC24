@@ -7,6 +7,7 @@ import maceLogo from '../../assets/Images/mace logo white.png';
 import qr from '../../assets/Images/qrcode.jpg'
 import { useAuth } from '../../libs/helper/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { supabase } from '../../libs/helper/supabaseClient';
 
 const ticketOptions = {
   'ieee': {
@@ -65,7 +66,6 @@ function Registration() {
     setFormData({...formData,[name]:value})
     if(name === 'ticketType') {
       const ticket = ticketOptions[value]
-      console.log(ticket)
       if(ticket) {
         setQrCode(ticket.qrCode)
         setUpiLink(ticket.UPI_LINK)
@@ -93,17 +93,42 @@ function Registration() {
     setFile(file)  
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async(e) => {
     e.preventDefault();
+    let screenshotURL = null
     setError(null)
-    if (!formData.name || !formData.yearOfStudy || !formData.college || !formData.ticketType || !formData.department || !file)
-      {
-        setError('Please fill all the fields and upload the screenshot')
+    if (!formData.name || !formData.yearOfStudy || !formData.college || !formData.ticketType || !formData.department || !file) {
+      setError('Please fill all the fields and upload the screenshot')
+      return;
+    }
+
+    if(file) {
+      const fileExtension = file.name.split('.').pop()
+      // creating custom file name to access later
+      const fileName = `${user.email}_${user.id}.${fileExtension}`
+
+      const {data:uploadData,error:uploadError} = await supabase
+      .storage
+      .from('payment-screenshots')
+      .upload(fileName,file)
+
+      if(uploadError) {
+        console.log('Fileupload error',uploadError)
+        setError("Error uploading screenshot: "+uploadError.message)
         return;
       }
-    console.log('Form submitted:', formData);
-    console.log(file)
-  };
+
+      screenshotURL = supabase.storage
+      .from('payment-screenshots')
+      .getPublicUrl(fileName)
+      .data
+      .publicUrl
+
+      //console.log("URL",screenshotURL)
+
+    };
+    console.log('Form submitted:', formData); 
+  }
 
 //console.log(formData)
 
