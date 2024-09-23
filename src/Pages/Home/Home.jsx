@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react"
+import { useAuth } from "../../libs/helper/AuthContext"
 import About from "../About/About"
 import AppFooter from "../Footer/Footer"
 import Hero from "../Hero/Hero"
@@ -7,8 +9,21 @@ import Navbar from "../Navbar/Navbar"
 import Sessions from "../Sessions/Sessions"
 import Sponsers from "../Sponsers/Sponsers"
 import Tickets from "../Tickets/Tickets"
+import './Home.css'
 
 const Home = () => {
+
+  const {user,loading:authLoading} = useAuth()
+  const [loading,setLoading] = useState(true)
+
+  useEffect(()=>{
+    console.log(user)
+    if(!authLoading)
+      setLoading(false)
+  },[authLoading])
+
+  if (loading) return <p className="loader">Loading....</p>
+
   return (
     <div>
         <Navbar/>
