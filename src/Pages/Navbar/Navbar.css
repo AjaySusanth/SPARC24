@@ -106,10 +106,7 @@ nav img{
   transition: all 0.3s ease-in;
   font-weight:600;
 }
-.buttons{
-  display: flex;
-  
-}
+
 .Sign-Up-btn{
   background-color: rgba(92, 123, 244, 1);
   color: white;
