@@ -8,7 +8,7 @@ import { supabase } from '../../libs/helper/supabaseClient';
 
 const SignUp = () => {
 
- 
+
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
@@ -56,8 +56,9 @@ const SignUp = () => {
   }
 
   return (
+  <section className='main-sec' >
     <WhiteBg className="sign-up-section"> <CornerIcon />
-      <section className="sign-upcont">
+    <div className="sign-upcont">
 
         {/* <Heading className="Sign-up" text="Sign-Up"/> */}
         <h2 className="signuptitle">Sign-Up</h2>
@@ -69,13 +70,13 @@ const SignUp = () => {
           </div>
 
           <div className="formGroup">
-            <input type="email" placeholder='Email' id="emailPhone" name="email"
+            <input type="email" placeholder='Email' id="emailPhone" name="email" required
             onChange={(e)=>setEmail(e.target.value)}
             />
           </div>
 
           <div className="formGroup">
-            <input type="password" placeholder="Password" id="password" name="password"
+            <input type="password" placeholder="Password" id="password" name="password" required
             onChange={(e)=>setPassword(e.target.value)}
             />
           </div>
@@ -84,7 +85,7 @@ const SignUp = () => {
           }
           <button type="submit" className="submitButton">Sign Up</button>
         </form>
-        <p className='redirect-login'>Already have an account?{" "}Login</p> 
+        <p className='redirect-login'>Already have an account? {" "}Login</p> 
         <div className="separatorContainer">
           <hr className="separator" />
           <span className="separatorText">OR</span>
@@ -98,9 +99,10 @@ const SignUp = () => {
           <button className="socialButton">
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" className="sign-up-logo" />
           </button>
-        </div></section>
+        </div>
+        </div>
     </WhiteBg>
-    
+    </section>
   );
 };
 
