@@ -4,8 +4,28 @@ import WhiteBg from '../WhiteBg/WhiteBg';
 import Cornericon from '../LCornericon/LCornericon';
 import Heading from '../Heading/Heading';
 import maceLogo from '../../assets/Images/mace logo white.png';
+import qr from '../../assets/Images/qrcode.jpg'
+
+const ticketOptions = {
+  'ieee': {
+    qrCode:qr,
+    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=50&cu=INR&tn=Sparc%20Registration'
+  },
+  'non-ieee': {
+    qrCode: qr,
+    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=100&cu=INR&tn=Sparc%20Registration'
+  },
+  'non-mace': {
+    qrCode: qr,
+    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=150&cu=INR&tn=Sparc%20Registration'
+  }
+}
+
 
 function Registration() {
+
+  //CURRENTLY DOING: handleFileChange, test it
+
   const [formData, setFormData] = useState({
     name: '',
     yearOfStudy: '',
@@ -15,18 +35,58 @@ function Registration() {
     membershipId: '',
   });
 
+  const [qrCode,setQrCode] = useState(null)
+  const [upiLink,setUpiLink] = useState(null)
+  const [error,setError] = useState(null)
+  const [file,setFile] = useState(null)
+  const [fileError,setFileError] = useState(null)
+
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setFormData((prevData) => ({
-      ...prevData,
-      [name]: value,
-    }));
+    setFormData({...formData,[name]:value})
+    if(name === 'ticketType') {
+      const ticket = ticketOptions[value]
+      console.log(ticket)
+      if(ticket) {
+        setQrCode(ticket.qrCode)
+        setUpiLink(ticket.UPI_LINK)
+      }
+    }
   };
+
+  const maxFileSize = 400 * 1024 // 400kb
+  const handleFileChange = (e)=> {
+    setError(null)
+    setFileError(null)
+    const file = e.target.files[0]
+    if(!file.type.startsWith("image/")) {
+      setFileError("Invalid file type, please upload an image")
+      setFile(null)
+      return;
+    }
+
+    // Handling file size limits
+    if(file.size > maxFileSize) {
+      setFileError("The uploaded file is too large. Please ensure it is under 400 KB")
+      setFile(null)
+      return;
+    } 
+    setFile(file)  
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    setError(null)
+    if (!formData.name || !formData.yearOfStudy || !formData.college || !formData.ticketType || !formData.department || !file)
+      {
+        setError('Please fill all the fields and upload the screenshot')
+        return;
+      }
     console.log('Form submitted:', formData);
   };
+
+//console.log(formData)
+//console.log(file)
 
   return (
     <div className="registration">
@@ -82,7 +142,7 @@ function Registration() {
               onChange={handleChange}
               required
             >
-              <option value="">Select Year</option>
+              <option value="" disabled default>Select Year</option>
               <option value="1st Year">1st Year</option>
               <option value="2nd Year">2nd Year</option>
               <option value="3rd Year">3rd Year</option>
@@ -99,10 +159,10 @@ function Registration() {
               onChange={handleChange}
               required
             >
-              <option value="">Select Ticket</option>
-              <option value="Student">IEEE Member</option>
-              <option value="Faculty">Non IEEE Member</option>
-              <option value="General">Non Macian</option>
+              <option value="" disabled default>Select Ticket</option>
+              <option value="ieee">IEEE Member (Mace)</option>
+              <option value="non-ieee">Non IEEE Member (Mace)</option>
+              <option value="non-mace">Non Macian</option>
             </select>
           </div>
 
@@ -116,10 +176,42 @@ function Registration() {
               onChange={handleChange}
             />
           </div>
+          
+          <div className="form-field-container">
+            {
+              qrCode ? <img src={qr} className='qr-code' alt='qr-code'/>
+              : 
+              <div className='qr-box'>
+                <p>Select ticket to generate qrcode</p>
+              </div>
+            }
+          </div>
+
+          <div className="form-field-container">
+            <button
+              type="button"
+              onClick={() => window.open(upiLink, '_blank')}
+              className="payment-btn"
+              aria-label="UPI Payment"
+            >
+              Pay via UPI App
+            </button>
+          </div>
+
+          <label>Add screenshot</label>  
+          <div className="form-field-container">
+            <input type="file" name="screenshot" accept="image/*" onChange={handleFileChange} />
+          </div>
+          {
+              fileError && <p className='error-message'>{fileError}</p>
+          }
 
           <div className="form-field-container">
             <button type="submit">Submit</button>
           </div>
+          {
+            error && <p className='error-message'>{error}</p>
+          }
         </form>
       </WhiteBg>
     </div>

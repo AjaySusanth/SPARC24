@@ -67,6 +67,22 @@ header {
   .registration-form button:hover {
     background-color: #0c153a;
   }
+
+  .qr-code{
+    width: 15rem;
+    height:15rem;
+    margin-bottom: 16px;
+  }
+  .qr-box{
+    width: 15rem;
+    height:15rem;
+    display: flex; 
+    padding: 0 0.75rem; 
+    justify-content: center; 
+    align-items: center;
+    border:1px solid black; 
+    margin-bottom: 16px;
+  }
   
   /* Responsiveness for smaller screens */
 @media (max-width: 768px) {
