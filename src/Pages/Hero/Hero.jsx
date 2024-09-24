@@ -2,8 +2,15 @@ import React, { useState, useEffect } from 'react';
 import sparcLogo from '../../assets/Images/sparc logo.png';
 import { IoIosArrowDown } from "react-icons/io";
 import './Hero.css';
+import { useAuth } from '../../libs/helper/AuthContext';
+import { useNavigate } from 'react-router-dom';
+
 
 function Hero() {
+
+  const {user} = useAuth()
+  const navigate = useNavigate()
+
   const calculateTimeLeft = () => {
     const eventDate = new Date('2024-10-19T08:00:00');
     const now = new Date();
@@ -44,7 +51,16 @@ function Hero() {
     if (aboutSection) {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
-  };  
+  }; 
+  
+  const handleRegisterClick = ()=>{
+    if (user) {
+      navigate('/register')
+    }
+    else {
+      navigate('/signup',{state:{toRegister:true}})
+    }
+  }
 
   return (
     <section className='hero-container section' id='home'>
@@ -52,7 +68,7 @@ function Hero() {
       <h1 className='date'>
         O C T <span>1 9 | 2 0</span>
       </h1>
-      <button className='register-button' onClick={handleScrollToTicketSection} >REGISTER NOW ↗ </button>
+      <button className='register-button' onClick={handleRegisterClick} >REGISTER NOW ↗ </button>
       <div className='countdown'>
         <div className='time'>
           <span>{String(timeLeft.days).padStart(2, '0')}</span>

@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './signup.css';
 import CornerIcon from '../LCornericon/LCornericon'
 import WhiteBg from '../WhiteBg/WhiteBg';
 import GoogleLogo from '../../assets/Images/devicon_google.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
-import Heading from '../Heading/Heading';
+import { useAuth } from '../../libs/helper/AuthContext';
 
 const SignUp = () => {
 
@@ -14,9 +14,28 @@ const SignUp = () => {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [error,setError] = useState(null)
-  //const [isRegisterIntent, setIsRegisterIntent] = useState(false);    
-  // const location = useLocation()
-  const navigate = useNavigate() 
+  const [isRegisterIntent, setIsRegisterIntent] = useState(false);  
+  const [loading,setLoading] = useState(true)  
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  const { user, loading:authLoading } = useAuth();
+
+  useEffect(() => {
+    if (!authLoading) {
+      if(user) {
+        navigate('/');
+      }
+      setLoading(false)  
+    }
+    
+  }, [user,authLoading]);
+
+  useEffect(() => {
+    if (location.state?.toRegister) {
+        setIsRegisterIntent(location.state.toRegister);
+    }
+    }, [location]);
 
   const handleSubmit = async(e) => {
     e.preventDefault()
@@ -33,8 +52,12 @@ const SignUp = () => {
 
       if(error) throw error;
 
-      console.log("Signup")
-      navigate('/')
+      if (isRegisterIntent) {
+        navigate('/register');
+      } else {
+        navigate('/');
+      }
+
     } catch (error) {
       console.log(error)
       setError(error.message) 
@@ -46,8 +69,15 @@ const SignUp = () => {
     try {
       const {data,error} = await supabase.auth.signInWithOAuth({
         provider:'google',
+        /*
         options:{
-          redirectTo:'https://sparc-24.vercel.app/'
+          redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
+          :   'http://localhost:5174/'
+        }*/
+       
+        options:{
+          redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
+          :   'https://sparc-24.vercel.app/'
         }
       })
       if(error) throw error;
@@ -55,6 +85,38 @@ const SignUp = () => {
       console.log(error)
     }
   }
+
+  const githubSignUp = async(e) => {
+    e.preventDefault()
+    try {
+      const {data,error} = await supabase.auth.signInWithOAuth({
+        provider:'github',
+        /*
+        options:{
+          redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
+          :   'http://localhost:5174/'
+        }*/
+        options:{
+          redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
+          :   'https://sparc-24.vercel.app/'
+        }
+      })
+      if(error) throw error;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  const handleLoginClick = () => {
+    if(isRegisterIntent) {
+      navigate('/login',{state:{toRegister:true}})
+    }
+    else {
+        navigate('/login',{state:{toRegister:false}})
+    }
+  }
+
+  if (loading) return <p className='loader'>Loading.....</p>
 
   return (
   <section className='main-sec' >
@@ -86,7 +148,7 @@ const SignUp = () => {
           }
           <button type="submit" className="submitButton">Sign Up</button>
         </form>
-        <p className='redirect-login'>Already have an account? {" "}Login</p> 
+        <p className='redirect-login' onClick={handleLoginClick}>Already have an account? {" "}Login</p>
         <div className="separatorContainer">
           <hr className="separator" />
           <span className="separatorText">OR</span>
@@ -97,7 +159,7 @@ const SignUp = () => {
           <button className="socialButton" onClick={googleSignUp}>
             <img src={GoogleLogo} alt="Google Logo" className="sign-up-logo" />
           </button>
-          <button className="socialButton">
+          <button className="socialButton" onClick={githubSignUp}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" className="sign-up-logo" />
           </button>
         </div>
