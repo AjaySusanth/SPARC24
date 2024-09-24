@@ -6,6 +6,7 @@ import GoogleLogo from '../../assets/Images/devicon_google.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
 import { useAuth } from '../../libs/helper/AuthContext';
+import Heading from '../Heading/Heading';
 
 const SignUp = () => {
 
@@ -123,7 +124,7 @@ const SignUp = () => {
     <WhiteBg className="sign-up-section"> <CornerIcon />
     <div className="sign-upcont">
 
-        {/* <Heading className="Sign-up" text="Sign-Up"/> */}
+        {/* <Heading className="signuptitle" text="Sign-Up"/> */}
         <h2 className="signuptitle">Sign-Up</h2>
         <form className="form" onSubmit={handleSubmit}>
           <div className="formGroup">
