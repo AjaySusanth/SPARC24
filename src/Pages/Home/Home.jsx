@@ -10,6 +10,7 @@ import Sessions from "../Sessions/Sessions"
 import Sponsers from "../Sponsers/Sponsers"
 import Tickets from "../Tickets/Tickets"
 import './Home.css'
+import Loader from "../../components/Loader/Loader"
 
 const Home = () => {
 
@@ -22,7 +23,7 @@ const Home = () => {
       setLoading(false)
   },[authLoading])
 
-  if (loading) return <p className="loader">Loading....</p>
+  if (loading) return <Loader/>
 
   return (
     <div>

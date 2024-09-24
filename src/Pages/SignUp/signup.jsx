@@ -7,6 +7,7 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
 import { useAuth } from '../../libs/helper/AuthContext';
 import Heading from '../Heading/Heading';
+import Loader from '../../components/Loader/Loader';
 
 const SignUp = () => {
 
@@ -117,7 +118,7 @@ const SignUp = () => {
     }
   }
 
-  if (loading) return <p className='loader'>Loading.....</p>
+  if (loading) return <Loader/>
 
   return (
   <section className='main-sec' >
