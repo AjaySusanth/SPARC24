@@ -14,15 +14,15 @@ import Verfied from './Verfied';
 const ticketOptions = {
   'ieee': {
     qrCode:qr,
-    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=50&cu=INR&tn=Sparc%20Registration'
+    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=1&cu=INR&tn=Sparc%20Registration'
   },
   'non-ieee': {
     qrCode: qr,
-    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=100&cu=INR&tn=Sparc%20Registration'
+    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=2&cu=INR&tn=Sparc%20Registration'
   },
   'non-mace': {
     qrCode: qr,
-    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=150&cu=INR&tn=Sparc%20Registration'
+    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=3&cu=INR&tn=Sparc%20Registration'
   }
 }
 
