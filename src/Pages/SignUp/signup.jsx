@@ -1,9 +1,9 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './signup.css';
 import CornerIcon from '../LCornericon/LCornericon'
 import WhiteBg from '../WhiteBg/WhiteBg';
 import GoogleLogo from '../../assets/Images/devicon_google.svg';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
 
 const SignUp = () => {
@@ -12,10 +12,16 @@ const SignUp = () => {
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
-  const [error,setError] = usenpState(null)
-  //const [isRegisterIntent, setIsRegisterIntent] = useState(false);    
-  // const location = useLocation()
-  const navigate = useNavigate() 
+  const [error,setError] = useState(null)
+  const [isRegisterIntent, setIsRegisterIntent] = useState(false);    
+  const location = useLocation()
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (location.state?.toRegister) {
+        setIsRegisterIntent(location.state.toRegister);
+    }
+    }, [location]);
 
   const handleSubmit = async(e) => {
     e.preventDefault()
@@ -32,8 +38,12 @@ const SignUp = () => {
 
       if(error) throw error;
 
-      console.log("Signup")
-      navigate('/')
+      if (isRegisterIntent) {
+        navigate('/register');
+      } else {
+        navigate('/');
+      }
+
     } catch (error) {
       console.log(error)
       setError(error.message) 
@@ -46,12 +56,22 @@ const SignUp = () => {
       const {data,error} = await supabase.auth.signInWithOAuth({
         provider:'google',
         options:{
-          redirectTo:'https://sparc-24.vercel.app/'
+          redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register' //'http://localhost:5174/register'
+          :  'https://sparc-24.vercel.app/' //'http://localhost:5174/'
         }
       })
       if(error) throw error;
     } catch (error) {
       console.log(error)
+    }
+  }
+
+  const handleLoginClick = () => {
+    if(isRegisterIntent) {
+      navigate('/login',{state:{toRegister:true}})
+    }
+    else {
+        navigate('/login',{state:{toRegister:false}})
     }
   }
 
@@ -85,7 +105,7 @@ const SignUp = () => {
           }
           <button type="submit" className="submitButton">Sign Up</button>
         </form>
-        <p className='redirect-login'>Already have an account? {" "}Login</p> 
+        <p className='redirect-login' onClick={handleLoginClick}>Already have an account? {" "}Login</p> 
         <div className="separatorContainer">
           <hr className="separator" />
           <span className="separatorText">OR</span>
