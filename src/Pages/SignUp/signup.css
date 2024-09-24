@@ -1,5 +1,7 @@
 .signuptitle{
   text-align:left;
+  /* font-size:2em;
+  font-family: 'Zen Dots'; */
 }
 
 .main-sec{
@@ -10,9 +12,6 @@
   align-items: center;
 }
 
-.signuptitle{
-  font-size:2em;
-}
 
 .sign-upcont *{
   font-family: 'Nunito Sans';
@@ -21,6 +20,8 @@
 .form {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  margin:0;
   /* padding:0 2rem; */
 }
 
@@ -32,7 +33,7 @@
 }
 
 .formGroup input{
-  padding:15px 0px;
+  padding:20px 0px;
   font-size:1.2rem;
   border-radius: 10px;
   font-weight: 700;
@@ -54,7 +55,7 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 25px;
 }
 
 .submitButton:hover,.submitButton:active{
@@ -86,7 +87,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 30px;
 }
 
 .socialButton {
@@ -136,7 +137,7 @@
   }
 }
 
-@media(min-width:425px) and (max-width:768px){
+@media(min-width:425px) and (max-width:767px){
   .sign-upcont{
     padding:3rem 40px;
     scale:0.9;
@@ -164,7 +165,7 @@
   font-size: 1rem;
 }
 }
-@media(min-width:768px) and (max-width:1024px){
+@media(min-width:768px) and (max-width:1023px){
     .sign-upcont{
       padding:4rem;
       min-width:80%;
@@ -179,7 +180,7 @@
   }
 
   .signuptitle{
-      /* text-align:center; */
+      text-align:left;
       font-size:1.8rem;
   }
   
@@ -202,17 +203,18 @@
 }
 
 
-  @media(min-width:1025px){
+  @media(min-width:1024px){
 
     .main-sec{
-        height:100vh;
-        padding: 1em;
+        height:90vh;
+        padding: 2rem 0px;
         margin:auto;
         max-width:700px;
     }
 
     .sign-upcont{
-      padding:2rem 5em;
+      margin:auto;
+      padding:4rem 5em 0rem;
       scale:1.01;
   }
 
