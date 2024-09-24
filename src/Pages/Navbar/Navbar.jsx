@@ -2,12 +2,21 @@ import React, { useEffect, useState, useRef } from 'react';
 import './Navbar.css';
 import macelogo from '../../assets/Images/mace logo white.png';
 import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../../libs/helper/AuthContext';
+import { supabase } from '../../libs/helper/supabaseClient';
 function Navbar() {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
   const [activeTab, setActiveTab] = useState('home');
+
+  
+  const {user} = useAuth()
+
+  const handleLogout = async() => {
+    await supabase.auth.signOut()
+  }
 
   useEffect(() => {
     const handleScroll = () => {
@@ -86,8 +95,11 @@ function Navbar() {
           <li><a href='#tickets'>tickets</a></li>
           <li><a  href='#sessions'>Sessions</a></li>
           <li><a href='#sponsors'>Sponsors</a></li>
-          <button className='Sign-Up-btn'>Sign Up</button>
-          
+            {
+              !user ? <button onClick={()=>navigate('/signup')} className='Sign-Up-btn'>Sign Up</button>
+              :  <button onClick={handleLogout} className='Sign-Up-btn'>Logout</button>
+            }
+  
       
       </ul>
 
@@ -145,7 +157,10 @@ function Navbar() {
         </ul>
         </div>
       
-        <button className='Sign-Up-btn hideOnMobile'>Sign Up</button>
+          {
+            !user ? <button onClick={()=>navigate('/signup')} className='Sign-Up-btn hideOnMobile'>Sign Up</button>
+            : <button onClick={handleLogout} className='Sign-Up-btn hideOnMobile'>Logout  </button>
+          }
           <li className='menu-btn hideOnMobile' onClick={() => setSidebarOpen(true)}>
           <a>
             <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e8eaed">
