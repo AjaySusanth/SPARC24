@@ -1,25 +1,27 @@
 // src/components/LoginModal.js
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './LoginModal.css'; 
 import Cornericon from '../RCornericon/RCornericon'
 import WhiteBg from "../WhiteBg/WhiteBg";
 import GoogleLogo from '../../assets/Images/devicon_google.svg';
 import { supabase } from '../../libs/helper/supabaseClient';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const LoginModal = () => {
   // State for Login
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginError, setLoginError] = useState(null);
-
-  // State for Sign Up
-  const [signupName, setSignupName] = useState('');
-  const [signupEmail, setSignupEmail] = useState('');
-  const [signupPassword, setSignupPassword] = useState('');
-  const [signupError, setSignupError] = useState(null);
+  const [isRegisterIntent, setIsRegisterIntent] = useState(false);
 
   const navigate = useNavigate();
+  const location = useLocation()
+
+  useEffect(() => {
+    if (location.state?.toRegister) {
+        setIsRegisterIntent(location.state.toRegister);
+    }
+    }, [location]);
 
   // Handle Login
   const handleLoginSubmit = async (e) => {
@@ -42,26 +44,6 @@ const LoginModal = () => {
     }
   };
 
-  // Handle Sign Up
-  const handleSignupSubmit = async (e) => {
-    e.preventDefault();
-    setSignupError(null);
-    if (!signupName || !signupEmail || !signupPassword) {
-      setSignupError('All fields are required');
-      return;
-    }
-    try {
-      const { data, error } = await supabase.auth.signUp({
-        email: signupEmail,
-        password: signupPassword,
-      });
-      if (error) throw error;
-      navigate('/');
-    } catch (error) {
-      console.error(error.message);
-      setSignupError(error.message);
-    }
-  };
 
   // Handle Google Sign Up
   const handleGoogleSignup = async (e) => {
@@ -69,15 +51,29 @@ const LoginModal = () => {
     try {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        options: {
-          redirectTo: 'https://sparc-24.vercel.app/',
-        },
+          /*options:{
+            redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
+            :   'http://localhost:5174/'
+          }*/
+          options:{
+            redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
+            :   'https://sparc-24.vercel.app/'
+          }
       });
       if (error) throw error;
     } catch (error) {
       console.log(error);
     }
   };
+
+  const handleSignupClick = () => {
+    if(isRegisterIntent) {
+      navigate('/signup',{state:{toRegister:true}})
+    }
+    else {
+        navigate('/signup',{state:{toRegister:false}})
+    }
+  }
 
   return (
     <div className="modal-overlay">
@@ -106,6 +102,7 @@ const LoginModal = () => {
                 {loginError && <p className="error-message">{loginError}</p>}
                 <button type="submit" className="submit">Login</button>
               </form>
+              <p className='redirect-login' onClick={handleSignupClick}>Don't have an account? {" "} Signup</p>
             </div>
             <div className="social-login">
                 <p>------------OR-------------</p>
