@@ -12,6 +12,7 @@ import Verfied from './Verfied';
 import ieee from '../../assets/Images/ieee.jpg'
 import nonIeee from '../../assets/Images/non-ieee.jpg'
 import nonMace from '../../assets/Images/non-mace.jpg'
+import Loader from '../../components/Loader/Loader';
 
 const ticketOptions = {
   'ieee': {
@@ -48,8 +49,7 @@ function Registration() {
   const [loading,setLoading] = useState(true)
   const [isRegistered,setIsRegistered] = useState(false)
   const [isVerified,setIsVerified] = useState(false)
-
-
+  const [isSubmitting,setIsSubmitting] = useState(false);
   const {user,loading:authLoading} = useAuth()
 
   
@@ -125,15 +125,18 @@ function Registration() {
 
   const handleSubmit = async(e) => {
     e.preventDefault();
+    setIsSubmitting(true)
     let screenshotURL = null
     setError(null)
     if (!formData.name || !formData.mobile || !formData.yearOfStudy || !formData.college || !formData.ticketType || !formData.department || !formData.accomodation || !file) {
       setError('Please fill all the fields and upload the screenshot')
+      setIsSubmitting(false);
       return;
     }
 
     if(formData.ticketType === 'ieee' && !formData.membershipId) {
       setError('Enter IEEE membership id')
+      setIsSubmitting(false);
       return;
     }
 
@@ -150,6 +153,7 @@ function Registration() {
       if(uploadError) {
         console.log('Fileupload error',uploadError)
         setError("Error uploading screenshot: "+uploadError.message)
+        setIsSubmitting(false);
         return;
       }
 
@@ -187,6 +191,7 @@ function Registration() {
       if(error) {
         console.error("Supabase error",error)
         setError("Error submitting form,try again later")
+        setIsSubmitting(false);
         return;
       }
 
@@ -198,11 +203,14 @@ function Registration() {
       setError("Unexpected error, try again later");
 
     }
+    finally {
+      setIsSubmitting(false)
+    }
   }
 
 //console.log(formData)
 
-  if (loading) return <p className='loader'>Loading.....</p>
+  if (loading || isSubmitting) return <Loader/>
   if(isVerified) return <Verfied/>
 
   if(isRegistered) return <Registered/>

@@ -116,7 +116,7 @@ const LoginModal = () => {
     }
   }
 
-  if (loading) return <p className='loader'>Loading.....</p>
+  if (loading) return <Loader/>
 
   return (
     <div className="modal-overlay">
