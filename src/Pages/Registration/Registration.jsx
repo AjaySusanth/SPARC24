@@ -4,28 +4,26 @@ import WhiteBg from '../WhiteBg/WhiteBg';
 import Cornericon from '../LCornericon/LCornericon';
 import Heading from '../Heading/Heading';
 import maceLogo from '../../assets/Images/mace logo white.png';
-import qr from '../../assets/Images/qrcode.jpg'
 import { useAuth } from '../../libs/helper/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
 import Registered from './Registered';
 import Verfied from './Verfied';
+import ieee from '../../assets/Images/ieee.jpg'
+import nonIeee from '../../assets/Images/non-ieee.jpg'
+import nonMace from '../../assets/Images/non-mace.jpg'
 
 const ticketOptions = {
   'ieee': {
-    qrCode:qr,
-    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=50&cu=INR&tn=Sparc%20Registration'
+    qrCode:ieee
   },
   'non-ieee': {
-    qrCode: qr,
-    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=100&cu=INR&tn=Sparc%20Registration'
+    qrCode: nonIeee
   },
   'non-mace': {
-    qrCode: qr,
-    UPI_LINK: 'upi://pay?pa=8943460250@ptsbi&pn=AjaySusanth&am=150&cu=INR&tn=Sparc%20Registration'
+    qrCode: nonMace
   }
 }
-
 
 function Registration() {
 
@@ -38,12 +36,12 @@ function Registration() {
     yearOfStudy: '',
     college: '',
     department: '',
+    accomodation:'',
     ticketType: '',
     membershipId: '',
   });
 
   const [qrCode,setQrCode] = useState(null)
-  const [upiLink,setUpiLink] = useState(null)
   const [error,setError] = useState(null)
   const [file,setFile] = useState(null)
   const [fileError,setFileError] = useState(null)
@@ -101,7 +99,6 @@ function Registration() {
       const ticket = ticketOptions[value]
       if(ticket) {
         setQrCode(ticket.qrCode)
-        setUpiLink(ticket.UPI_LINK)
       }
     }
   };
@@ -130,8 +127,13 @@ function Registration() {
     e.preventDefault();
     let screenshotURL = null
     setError(null)
-    if (!formData.name || !formData.mobile || !formData.yearOfStudy || !formData.college || !formData.ticketType || !formData.department || !file) {
+    if (!formData.name || !formData.mobile || !formData.yearOfStudy || !formData.college || !formData.ticketType || !formData.department || !formData.accomodation || !file) {
       setError('Please fill all the fields and upload the screenshot')
+      return;
+    }
+
+    if(formData.ticketType === 'ieee' && !formData.membershipId) {
+      setError('Enter IEEE membership id')
       return;
     }
 
@@ -172,6 +174,7 @@ function Registration() {
           college:formData.college,
           department:formData.department,
           year:formData.yearOfStudy,
+          accomodation:formData.accomodation,
           ticket:formData.ticketType,
           membership_id:formData.membershipId,
           screenshot_url:screenshotURL,
@@ -188,6 +191,7 @@ function Registration() {
       }
 
       console.log("Registered successfully",data)
+      setIsRegistered(true);
 
     } catch (err) {
       console.error("Submission error:", err);
@@ -279,6 +283,21 @@ function Registration() {
             </select>
           </div>
 
+          <label htmlFor="accomodation">Do you require accomodation ?</label>
+          <div className="form-field-container">
+            <select
+              id="accomodation"
+              name="accomodation"
+              value={formData.accomodation}
+              onChange={handleChange}
+              required
+            >
+              <option value="" disabled default>Select Yes or No</option>
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+
           <label htmlFor="ticketType">Ticket</label>
           <div className="form-field-container">
             <select
@@ -295,20 +314,26 @@ function Registration() {
             </select>
           </div>
 
-          <label htmlFor="membershipId">Membership ID</label>
-          <div className="form-field-container">
-            <input
-              type="text"
-              id="membershipId"
-              name="membershipId"
-              value={formData.membershipId}
-              onChange={handleChange}
-            />
-          </div>
+          {
+            formData.ticketType === 'ieee' && (
+              <>
+                <label htmlFor="membershipId">Membership ID</label>
+                <div className="form-field-container">
+                  <input
+                    type="text"
+                    id="membershipId"
+                    name="membershipId"
+                    value={formData.membershipId}
+                    onChange={handleChange}
+                  />
+                </div>
+              </>
+            )
+          }
           
           <div className="form-field-container">
             {
-              qrCode ? <img src={qr} className='qr-code' alt='qr-code'/>
+              qrCode ? <img src={qrCode} className='qr-code' alt='qr-code'/>
               : 
               <div className='qr-box'>
                 <p>Select ticket to generate qrcode</p>
@@ -317,14 +342,11 @@ function Registration() {
           </div>
 
           <div className="form-field-container">
-            <button
-              type="button"
-              onClick={() => window.open(upiLink, '_blank')}
-              className="payment-btn"
-              aria-label="UPI Payment"
-            >
-              Pay via UPI App
-            </button>
+            <a href={qrCode} download='SparcRegistrationQRCode.jpg'>
+              <button type='button' className='download-btn'>
+                Download QR Code
+              </button>
+            </a>
           </div>
 
           <label>Add screenshot</label>  
