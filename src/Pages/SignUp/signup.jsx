@@ -86,6 +86,27 @@ const SignUp = () => {
     }
   }
 
+  const githubSignUp = async(e) => {
+    e.preventDefault()
+    try {
+      const {data,error} = await supabase.auth.signInWithOAuth({
+        provider:'github',
+        /*
+        options:{
+          redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
+          :   'http://localhost:5174/'
+        }*/
+        options:{
+          redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
+          :   'https://sparc-24.vercel.app/'
+        }
+      })
+      if(error) throw error;
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const handleLoginClick = () => {
     if(isRegisterIntent) {
       navigate('/login',{state:{toRegister:true}})
@@ -138,7 +159,7 @@ const SignUp = () => {
           <button className="socialButton" onClick={googleSignUp}>
             <img src={GoogleLogo} alt="Google Logo" className="sign-up-logo" />
           </button>
-          <button className="socialButton">
+          <button className="socialButton" onClick={githubSignUp}>
             <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" className="sign-up-logo" />
           </button>
         </div>

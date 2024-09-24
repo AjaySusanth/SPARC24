@@ -83,6 +83,30 @@ const LoginModal = () => {
     }
   };
 
+  // Github OAuth
+  const handleGithubSignup = async (e) => {
+    e.preventDefault();
+    try {
+      const { data, error } = await supabase.auth.signInWithOAuth({
+        provider: 'github',
+        /*
+          options:{
+          
+            redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
+            :   'http://localhost:5174/'
+          }*/
+         
+          options:{
+            redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
+            :   'https://sparc-24.vercel.app/'
+          }
+      });
+      if (error) throw error;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const handleSignupClick = () => {
     if(isRegisterIntent) {
       navigate('/signup',{state:{toRegister:true}})
@@ -129,7 +153,7 @@ const LoginModal = () => {
                   <button onClick={handleGoogleSignup} className="social-button">
                     <img src={GoogleLogo} alt="Google Logo" />
                   </button>
-                  <button onClick={() => {/* Add GitHub login handler */}} className="social-button">
+                  <button onClick={handleGithubSignup} className="social-button">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" />
                   </button>
                 </div>
