@@ -56,8 +56,8 @@ const SignUp = () => {
       const {data,error} = await supabase.auth.signInWithOAuth({
         provider:'google',
         options:{
-          redirectTo: isRegisterIntent ? 'http://localhost:5174/register'//'https://sparc-24.vercel.app/register'
-          : 'http://localhost:5174/' //https://sparc-24.vercel.app/
+          redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register' //'http://localhost:5174/register'
+          :  'https://sparc-24.vercel.app/' //'http://localhost:5174/'
         }
       })
       if(error) throw error;
