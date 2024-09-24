@@ -6,16 +6,30 @@ import WhiteBg from "../WhiteBg/WhiteBg";
 import GoogleLogo from '../../assets/Images/devicon_google.svg';
 import { supabase } from '../../libs/helper/supabaseClient';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../libs/helper/AuthContext';
 
 const LoginModal = () => {
-  // State for Login
+
   const [loginEmail, setLoginEmail] = useState('');
   const [loginPassword, setLoginPassword] = useState('');
   const [loginError, setLoginError] = useState(null);
   const [isRegisterIntent, setIsRegisterIntent] = useState(false);
+  const [loading,setLoading] = useState(true)
+
+  const { user, loading:authLoading } = useAuth();
 
   const navigate = useNavigate();
   const location = useLocation()
+
+  useEffect(() => {
+    if (!authLoading) {
+      if(user) {
+        navigate('/');
+      }
+      setLoading(false)  
+    }
+    
+  }, [user,authLoading]);
 
   useEffect(() => {
     if (location.state?.toRegister) {
@@ -51,10 +65,13 @@ const LoginModal = () => {
     try {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-          /*options:{
+        /*
+          options:{
+          
             redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
             :   'http://localhost:5174/'
-          }*/
+          }
+         */
           options:{
             redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
             :   'https://sparc-24.vercel.app/'
@@ -74,6 +91,8 @@ const LoginModal = () => {
         navigate('/signup',{state:{toRegister:false}})
     }
   }
+
+  if (loading) return <p className='loader'>Loading.....</p>
 
   return (
     <div className="modal-overlay">

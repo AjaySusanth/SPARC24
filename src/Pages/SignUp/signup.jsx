@@ -5,6 +5,7 @@ import WhiteBg from '../WhiteBg/WhiteBg';
 import GoogleLogo from '../../assets/Images/devicon_google.svg';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
+import { useAuth } from '../../libs/helper/AuthContext';
 
 const SignUp = () => {
 
@@ -13,9 +14,22 @@ const SignUp = () => {
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
   const [error,setError] = useState(null)
-  const [isRegisterIntent, setIsRegisterIntent] = useState(false);    
+  const [isRegisterIntent, setIsRegisterIntent] = useState(false);  
+  const [loading,setLoading] = useState(true)  
   const location = useLocation()
   const navigate = useNavigate()
+
+  const { user, loading:authLoading } = useAuth();
+
+  useEffect(() => {
+    if (!authLoading) {
+      if(user) {
+        navigate('/');
+      }
+      setLoading(false)  
+    }
+    
+  }, [user,authLoading]);
 
   useEffect(() => {
     if (location.state?.toRegister) {
@@ -55,10 +69,12 @@ const SignUp = () => {
     try {
       const {data,error} = await supabase.auth.signInWithOAuth({
         provider:'google',
-        /*options:{
+        /*
+        options:{
           redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
           :   'http://localhost:5174/'
         }*/
+       
         options:{
           redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
           :   'https://sparc-24.vercel.app/'
@@ -78,6 +94,8 @@ const SignUp = () => {
         navigate('/login',{state:{toRegister:false}})
     }
   }
+
+  if (loading) return <p className='loader'>Loading.....</p>
 
   return (
   <section className='main-sec' >
