@@ -5,6 +5,7 @@ import WhiteBg from '../WhiteBg/WhiteBg';
 import GoogleLogo from '../../assets/Images/devicon_google.svg';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
+import Heading from '../Heading/Heading';
 
 const SignUp = () => {
 
@@ -12,7 +13,7 @@ const SignUp = () => {
   const [name,setName] = useState('')
   const [email,setEmail] = useState('')
   const [password,setPassword] = useState('')
-  const [error,setError] = usenpState(null)
+  const [error,setError] = useState(null)
   //const [isRegisterIntent, setIsRegisterIntent] = useState(false);    
   // const location = useLocation()
   const navigate = useNavigate() 
