@@ -71,12 +71,12 @@ const SignUp = () => {
     try {
       const {data,error} = await supabase.auth.signInWithOAuth({
         provider:'google',
-        /*
+       /* 
         options:{
           redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
           :   'http://localhost:5174/'
-        }*/
-       
+        }
+       */
         options:{
           redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
           :   'https://sparc-24.vercel.app/'
@@ -150,7 +150,7 @@ const SignUp = () => {
           }
           <button type="submit" className="submitButton">Sign Up</button>
         </form>
-        <p className='redirect-login' onClick={handleLoginClick}>Already have an account? {" "}Login</p>
+        <p className='redirect-login' onClick={handleLoginClick}>Already have an account? {" "}<span>Login</span></p>
         <div className="separatorContainer">
           <hr className="separator" />
           <span className="separatorText">OR</span>
