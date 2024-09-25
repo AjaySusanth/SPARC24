@@ -21,19 +21,21 @@ function AppFooter() {
         FOLLOW US 
       </div>
       <div className="icons">
-        <a href="https://www.facebook.com/yourpage" target="_blank" rel="noopener noreferrer" className="social-link">
-          <i className="bi bi-facebook"></i>
-        </a>
-        <a href="https://www.twitter.com/yourpage" target="_blank" rel="noopener noreferrer" className="social-link">
+      <a href="https://www.ieeemace.org/" target="_blank" rel="noopener noreferrer" className="social-link">
+  <i className="bi bi-globe"></i>
+</a>
+        <a href="https://twitter.com/ieeemace" target="_blank" rel="noopener noreferrer" className="social-link">
         <i class="bi bi-twitter-x"></i>
         </a>
-        <a href="https://www.instagram.com/yourpage" target="_blank" rel="noopener noreferrer" className="social-link">
+        <a href="https://www.instagram.com/ieeemace/" target="_blank" rel="noopener noreferrer" className="social-link">
           <i className="bi bi-instagram"></i>
         </a>
-        <a href="https://www.linkedin.com/yourpage" target="_blank" rel="noopener noreferrer" className="social-link">
+        <a href="https://www.linkedin.com/company/ieeemace/mycompany/" target="_blank" rel="noopener noreferrer" className="social-link">
         <i class="bi bi-linkedin"></i>
         </a>
-      </div>
+       </div>
+
+     
       <div className="lastline">&copy; <span className="bold-text">SPARC</span> All Rights Reserved</div>
       <button className="scroll-to-top" onClick={Scroll}>
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="6 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
