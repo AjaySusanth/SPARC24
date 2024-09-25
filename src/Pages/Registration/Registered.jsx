@@ -1,6 +1,10 @@
+import { useNavigate } from 'react-router-dom'
 import './Registered.css'
 import { FaWhatsapp } from 'react-icons/fa'
 const Registered = () => {
+
+  const navigate = useNavigate()
+
   return (
     <div className='registered-container'>
         <h1 className='registered-title'>You have successfully registered for SPARC'24</h1>
@@ -10,7 +14,7 @@ const Registered = () => {
             Join
             <FaWhatsapp className='whatsapp-icon'/>
           </button>
-          <button className='back-to-home'>Back to Home</button>
+          <button className='back-to-home' onClick={()=>navigate('/')}>Back to Home</button>
         </div>
     </div>
   )

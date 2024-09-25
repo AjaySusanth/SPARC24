@@ -6,7 +6,9 @@
     color: #ffff;
     justify-content: center;
     align-items: center;
-    margin:auto;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
     height: 100vh;
     margin-top: -20px;
 }
