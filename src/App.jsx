@@ -4,6 +4,7 @@ import Home from './Pages/Home/Home'
 import SignUp from './Pages/SignUp/signup'
 import Registration from './Pages/Registration/Registration'
 import { AuthProvider } from './libs/helper/AuthContext'
+import LoginModal from './Pages/Login/LoginModal'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <Routes>
           <Route path='/' element={<Home/>}/>
           <Route path='/signup' element={<SignUp/>}/>
+          <Route path='/login' element={<LoginModal/>}/>
           <Route path='/register' element={<Registration/>}/>
         </Routes>
       </Router>
