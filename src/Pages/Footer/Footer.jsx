@@ -11,10 +11,10 @@ function AppFooter() {
     <div className="Main">
       <div className="connect">CONNECT US</div>
       <div className="name">
-        <a href="tel:+1234567890" className="contact-link">
-          <i className="bi bi-whatsapp"></i> ABC
-        </a><a href="tel:+1234567890" className="contact-link">
-          <i className="bi bi-whatsapp"></i> XYZ
+        <a href="https://wa.me/+918590444031" target="_blank" rel="noopener noreferrer" className="contact-link">
+          <i className="bi bi-whatsapp"></i> LAKSHMI DINESHKUMAR
+        </a><a href="https://wa.me/+917356424761" target="_blank" rel="noopener noreferrer" className="contact-link">
+          <i className="bi bi-whatsapp"></i> SARA MATHEW
         </a>
       </div>
       <div className="follow">
