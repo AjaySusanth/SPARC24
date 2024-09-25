@@ -1,0 +1,108 @@
+.registered-container {
+    font-family: 'Zen Dots', sans-serif;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    color: #ffff;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    box-sizing: border-box;
+    overflow: hidden;
+    height: 100vh;
+    margin-top: -20px;
+}
+.registered-title{  
+
+    font-weight: 800;
+    font-size: 45px;
+    line-height: 80px;
+    color: #ffff;
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 3px;
+}
+
+.registered-sub{
+    margin-top: 0px;
+    font-size: 23px;
+    font-family: 'Zen Dots', sans-serif;
+    max-width: 900px;
+    text-align: center;
+}
+.join-channel,.back-to-home {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Nunito Sans', sans-serif;
+    text-transform: uppercase;
+    background-color: transparent;
+    color: #fff;
+    border: 2px solid #fff;
+    padding: 10px 30px;
+    font-size: 18px;
+    cursor: pointer;
+    border-radius: 40px;
+    transition: background-color 0.3s, color 0.3s;
+}
+.join-channel:hover, .back-to-home:hover {
+    background-color: #fff;
+    color: #0a0f35;
+  }
+  .whatsapp-icon {
+    margin-left: 10px;
+    font-size: 25px;
+  }
+
+.registered-btn-container {
+    margin-top: 10px;
+    display: flex;
+    gap: 30px;
+}
+
+@media (max-width: 1024px) {
+    .registered-title {
+        font-size: 32px;
+        line-height: 60px; 
+    }
+
+    .registered-sub{
+        margin-top: 10px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .registered-title {
+        font-size: 28px;
+        line-height: 50px;
+    }
+    .registered-sub{
+        margin-top: 20px;
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .registered-title {
+        font-size: 24px;
+        line-height: 30px; 
+    }
+
+    .registered-sub{
+        margin-top: 10px;
+        font-size: 15px;
+    }
+    .registered-btn-container {
+        flex-direction: column;
+    }
+
+    .join-channel,.back-to-home {
+        padding: 10px;
+        font-size: 14px;
+    }
+    .whatsapp-icon {
+        margin-left: 10px;
+        font-size: 17px;
+      }
+}
