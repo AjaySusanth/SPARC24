@@ -1,13 +1,12 @@
-// src/components/LoginModal.js
 import React, { useEffect, useState } from 'react';
-import './LoginModal.css'; 
-import Cornericon from '../RCornericon/RCornericon'
 import WhiteBg from "../WhiteBg/WhiteBg";
 import GoogleLogo from '../../assets/Images/devicon_google.svg';
 import { supabase } from '../../libs/helper/supabaseClient';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../libs/helper/AuthContext';
 import Loader from '../../components/Loader/Loader';
+import CornerIcon from '../LCornericon/LCornericon';
+import '../SignUp/signup.css'
 
 const LoginModal = () => {
 
@@ -52,7 +51,13 @@ const LoginModal = () => {
         password: loginPassword,
       });
       if (error) throw error;
-      navigate('/');
+      
+      if (isRegisterIntent) {
+        navigate('/register');
+      } else {
+        navigate('/');
+      }
+
     } catch (error) {
       console.error(error.message);
       setLoginError(error.message);
@@ -66,7 +71,7 @@ const LoginModal = () => {
     try {
       const { data, error } = await supabase.auth.signInWithOAuth({
         provider: 'google',
-        /*
+          /*
           options:{
           
             redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
@@ -92,10 +97,10 @@ const LoginModal = () => {
         provider: 'github',
         /*
           options:{
-          
             redirectTo: isRegisterIntent ? 'http://localhost:5174/register' 
             :   'http://localhost:5174/'
-          }*/
+          }
+            */
          
           options:{
             redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
@@ -120,52 +125,47 @@ const LoginModal = () => {
   if (loading) return <Loader/>
 
   return (
-    <div className="modal-overlay">
-      <div className="modal">
-        <Cornericon />
-      
-          <div className="auth-container">
-            {/* Login Form */}
-            <div className="auth-form">
-              <h2>Login</h2>
-              <form onSubmit={handleLoginSubmit}>
-                <input
-                className='button1'
-                  type="text"
-                  placeholder="Email"
-                  value={loginEmail}
-                  onChange={(e) => setLoginEmail(e.target.value)}
-                />
-                <input
-                className='button1'
-                  type="password"
-                  placeholder="Password"
-                  value={loginPassword}
-                  onChange={(e) => setLoginPassword(e.target.value)}
-                />
-                {loginError && <p className="error-message">{loginError}</p>}
-                <button type="submit" className="submit">Login</button>
-              </form>
-              <p className='redirect-login' onClick={handleSignupClick}>Don't have an account? {" "} Signup</p>
-            </div>
-            <div className="social-login">
-                <p>------------OR-------------</p>
-                <div className="social-icons">
-                  <button onClick={handleGoogleSignup} className="social-button">
-                    <img src={GoogleLogo} alt="Google Logo" />
-                  </button>
-                  <button onClick={handleGithubSignup} className="social-button">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" />
-                  </button>
-                </div>
-              </div>
+    <section className='main-sec' >
+      <WhiteBg className="sign-up-section"> <CornerIcon />
+        <div className="sign-upcont">
 
-           
+          {/* <Heading className="signuptitle" text="Sign-Up"/> */}
+          <h2 className="signuptitle">Login</h2>
+          <form className="form" onSubmit={handleLoginSubmit}>
+            <div className="formGroup">
+              <input type="email" placeholder='Email' id="emailPhone" name="email" required
+                onChange={(e) => setLoginEmail(e.target.value)}
+              />
+            </div>
+
+            <div className="formGroup">
+              <input type="password" placeholder="Password" id="password" name="password" required
+                onChange={(e) => setLoginPassword(e.target.value)}
+              />
+            </div>
+            {
+              loginError && <p className='error-message'>{loginError}</p>
+            }
+            <button type="submit" className="submitButton">Login</button>
+          </form>
+          <p className='redirect-login' onClick={handleSignupClick}>Don't have an account? {" "}<span>Signup</span></p>
+          <div className="separatorContainer">
+            <hr className="separator" />
+            <span className="separatorText">OR</span>
+            <hr className="separator" />
           </div>
-      
-        
-      </div>
-    </div>
+
+          <div className="socialSignup">
+            <button className="socialButton" onClick={handleGoogleSignup}>
+              <img src={GoogleLogo} alt="Google Logo" className="sign-up-logo" />
+            </button>
+            <button className="socialButton" onClick={handleGithubSignup}>
+              <img src="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg" alt="GitHub Logo" className="sign-up-logo" />
+            </button>
+          </div>
+        </div>
+      </WhiteBg>
+    </section>
   );
 };
 
