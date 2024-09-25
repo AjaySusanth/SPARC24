@@ -4,6 +4,8 @@ import macelogo from '../../assets/Images/mace logo white.png';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../../libs/helper/AuthContext';
 import { supabase } from '../../libs/helper/supabaseClient';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Navbar() {
   const navigate = useNavigate();
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -15,7 +17,24 @@ function Navbar() {
   const {user} = useAuth()
 
   const handleLogout = async() => {
-    await supabase.auth.signOut()
+    try {
+      const {error} = await supabase.auth.signOut()
+      if (error) throw error;
+      toast.success("Logged out successfully",{
+        position:'bottom-right',
+        hideProgressBar: true,
+        closeButton:false,
+        autoClose:3000
+      })
+    } catch (error) {
+      console.error(error)
+      toast.error("Logout failed due to unexpected error, try again later",{
+        position:'bottom-right',
+        hideProgressBar: true,
+        closeButton:false,
+        autoClose:3000
+      })
+    }
   }
 
   useEffect(() => {
@@ -169,6 +188,7 @@ function Navbar() {
           </a>
         </li>
       </ul>
+      <ToastContainer/>
     </nav>
   );
 }
