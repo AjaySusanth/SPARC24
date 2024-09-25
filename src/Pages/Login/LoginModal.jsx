@@ -7,6 +7,7 @@ import GoogleLogo from '../../assets/Images/devicon_google.svg';
 import { supabase } from '../../libs/helper/supabaseClient';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { useAuth } from '../../libs/helper/AuthContext';
+import Loader from '../../components/Loader/Loader';
 
 const LoginModal = () => {
 
