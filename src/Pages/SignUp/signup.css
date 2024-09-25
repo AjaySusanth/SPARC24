@@ -133,7 +133,12 @@
   }
 
   .submitButton{
+    margin-top:1rem;
     font-size: 1rem;
+  }
+
+  .redirect-login{
+    margin: 1rem 0 -0.2rem;
   }
 }
 
@@ -163,11 +168,12 @@
 
 .submitButton{
   font-size: 1rem;
+  margin:1rem;
 }
 }
 @media(min-width:768px) and (max-width:1023px){
     .sign-upcont{
-      padding:4rem;
+      padding:3rem;
       min-width:80%;
       scale:1.01;
   }
@@ -176,7 +182,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* margin-left:calc(10%); */
+    /* max-width:600px;
+    margin:auto; */
   }
 
   .signuptitle{
@@ -192,10 +199,10 @@
     border:1px solid grey;
   }
   
-  .redirect-login{
+  /* .redirect-login{
     padding:1rem 0rem;
     margin:0;
-  }
+  } */
   
   .submitButton{
     font-size: 1rem;
@@ -219,7 +226,6 @@
   }
 
   .signuptitle{
-      /* text-align:center; */
       font-size:1.8rem;
   }
 
@@ -231,14 +237,24 @@
     border:1px solid grey;
   }
 
-  .redirect-login{
+  /* .redirect-login{
     padding:1rem 0rem;
     margin:0;
-  }
+  } */
   
   .submitButton{
     font-size: 1rem;
+    margin:1rem 30px;
   }
+  
+  /* .redirect-login{
+    margin:-0.5rem 0px;
+  }
+
+  .error-message{
+    margin-bottom: -0.4rem;
+  } */
+  
   }
 
   .error-message{
