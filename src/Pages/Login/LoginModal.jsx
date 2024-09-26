@@ -79,8 +79,8 @@ const LoginModal = () => {
           }
          */
           options:{
-            redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
-            :   'https://sparc-24.vercel.app/'
+            redirectTo: isRegisterIntent ? 'https://sparc24.ieeemace.org/register'
+            :   'https://sparc24.ieeemace.org/'
           }
       });
       if (error) throw error;
@@ -103,8 +103,8 @@ const LoginModal = () => {
             */
          
           options:{
-            redirectTo: isRegisterIntent ? 'https://sparc-24.vercel.app/register'
-            :   'https://sparc-24.vercel.app/'
+            redirectTo: isRegisterIntent ? 'https://sparc24.ieeemace.org/register'
+            :   'https://sparc24.ieeemace.org/'
           }
       });
       if (error) throw error;
