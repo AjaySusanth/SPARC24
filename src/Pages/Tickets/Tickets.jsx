@@ -43,7 +43,7 @@ function Tickets() {
           </div>
           <div className="ticket t2">
             <img src={t2} alt='tkt-icon' className='tkt-icon'></img>
-            <h2>NON  MACIANS</h2>
+            <h2>NON  MACEIANS</h2>
             <span className='price'>₹599</span>
             <button className='reg-btn' onClick={handleRegisterClick}>Register Now↗</button>
           </div>
