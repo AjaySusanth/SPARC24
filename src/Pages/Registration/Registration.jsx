@@ -69,7 +69,7 @@ function Registration() {
         setIsRegistered((data[0].registered))
         setIsVerified((data[0].verified))
       }
-       //console.log(data[0])
+       console.log(data[0])
     } catch (error) {
       console.error("Unexpected error",error.message)
       setError("Unexpected error,try again later")
@@ -86,7 +86,7 @@ function Registration() {
     }
     else if (user)
     {
-     // console.log(user)
+      console.log(user)
       checkRegistration()
     }
   },[user,authLoading])
@@ -194,7 +194,7 @@ function Registration() {
         return;
       }
 
-     // console.log("Registered successfully",data)
+      console.log("Registered successfully",data)
       setIsRegistered(true);
 
     } catch (err) {
@@ -282,9 +282,6 @@ function Registration() {
             >
               <option value="" disabled default>Select Year</option>
               <option value="1st Year">1st Year</option>
-              <option value="2nd Year">2nd Year</option>
-              <option value="3rd Year">3rd Year</option>
-              <option value="4th Year">4th Year</option>
             </select>
           </div>
 
@@ -315,7 +312,7 @@ function Registration() {
               <option value="" disabled default>Select Ticket</option>
               <option value="ieee">IEEE Member (Mace)</option>
               <option value="non-ieee">Non IEEE Member (Mace)</option>
-              <option value="non-mace">Non Macian</option>
+              <option value="non-mace">Non Maceian</option>
             </select>
           </div>
 
