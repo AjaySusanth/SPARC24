@@ -69,7 +69,7 @@ function Registration() {
         setIsRegistered((data[0].registered))
         setIsVerified((data[0].verified))
       }
-       console.log(data[0])
+       //console.log(data[0])
     } catch (error) {
       console.error("Unexpected error",error.message)
       setError("Unexpected error,try again later")
@@ -86,7 +86,7 @@ function Registration() {
     }
     else if (user)
     {
-      console.log(user)
+     // console.log(user)
       checkRegistration()
     }
   },[user,authLoading])
@@ -194,7 +194,7 @@ function Registration() {
         return;
       }
 
-      console.log("Registered successfully",data)
+     // console.log("Registered successfully",data)
       setIsRegistered(true);
 
     } catch (err) {

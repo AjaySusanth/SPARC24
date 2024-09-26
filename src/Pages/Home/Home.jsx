@@ -18,7 +18,7 @@ const Home = () => {
   const [loading,setLoading] = useState(true)
 
   useEffect(()=>{
-    console.log(user)
+    //console.log(user)
     if(!authLoading)
       setLoading(false)
   },[authLoading])
