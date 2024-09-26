@@ -116,7 +116,6 @@
   }
 
   .signuptitle{
-      /* text-align:center; */
       font-size:1.8rem;
   }
 
@@ -146,7 +145,6 @@
 }
 
 .signuptitle{
-    /* text-align:center; */
     font-size:1.8rem;
 }
 
@@ -179,8 +177,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    /* max-width:600px;
-    margin:auto; */
+    max-width:600px;
+    margin:auto;
   }
 
   .signuptitle{
@@ -196,10 +194,10 @@
     border:1px solid grey;
   }
   
-  /* .redirect-login{
+  .redirect-login{
     padding:1rem 0rem;
     margin:0;
-  } */
+  }
   
   .submitButton{
     font-size: 1rem;
@@ -210,7 +208,7 @@
   @media(min-width:1024px){
 
     .main-sec{
-        height:90vh;
+        height:60vh;
         padding: 2rem 0px;
         margin:auto;
         max-width:700px;
@@ -234,23 +232,23 @@
     border:1px solid grey;
   }
 
-  /* .redirect-login{
+  .redirect-login{
     padding:1rem 0rem;
     margin:0;
-  } */
+  }
   
   .submitButton{
     font-size: 1rem;
     margin:1rem 30px;
   }
   
-  /* .redirect-login{
+  .redirect-login{
     margin:-0.5rem 0px;
   }
 
   .error-message{
     margin-bottom: -0.4rem;
-  } */
+  }
   
   }
 
