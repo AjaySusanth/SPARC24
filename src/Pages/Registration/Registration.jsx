@@ -3,7 +3,6 @@ import './Registration.css';
 import WhiteBg from '../WhiteBg/WhiteBg';
 import Cornericon from '../LCornericon/LCornericon';
 import Heading from '../Heading/Heading';
-import maceLogo from '../../assets/Images/mace logo white.png';
 import { useAuth } from '../../libs/helper/AuthContext';
 import { useNavigate } from 'react-router-dom';
 import { supabase } from '../../libs/helper/supabaseClient';
@@ -218,10 +217,8 @@ function Registration() {
 
   return (
     <div className="registration">
-      <header>
-        <img src={maceLogo} alt="MACE Logo" />
-      </header>
-      <WhiteBg height="auto" className="white-bg">
+
+      <WhiteBg height="auto">
         <Cornericon />
         <Heading text="Register" />
         <form className="registration-form" onSubmit={handleSubmit}>
@@ -362,14 +359,14 @@ function Registration() {
             <input type="file" name="screenshot" accept="image/*" onChange={handleFileChange} />
           </div>
           {
-              fileError && <p className='error-message'>{fileError}</p>
+              fileError && <p className='register-error-message'>{fileError}</p>
           }
 
           <div className="form-field-container">
-            <button type="submit">Submit</button>
+            <button type="submit" className='submit-btn'>Submit</button>
           </div>
           {
-            error && <p className='error-message'>{error}</p>
+            error && <p className='register-error-message'>{error}</p>
           }
         </form>
       </WhiteBg>
