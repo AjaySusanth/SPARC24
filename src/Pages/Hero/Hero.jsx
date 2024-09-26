@@ -68,6 +68,7 @@ function Hero() {
       <h1 className='date'>
         O C T <span>1 9 | 2 0</span>
       </h1>
+      <h1 className='excl-sub'>EXCLUSIVELY FOR FIRST YEARS.</h1>
       <button className='register-button' onClick={handleRegisterClick} >REGISTER NOW ↗ </button>
       <div className='countdown'>
         <div className='time'>

@@ -1,3 +1,14 @@
+.excl-sub{
+  font-family: 'Zen Dots';
+  font-size: 25px;
+  color:white;
+  word-spacing: 2px;
+  font-weight: 600;
+  margin-top: -1rem;
+  margin-bottom:2rem;
+  letter-spacing: 1px;
+}
+
 .hero-container {
     position: relative;
     display: flex;
@@ -204,6 +215,11 @@
   
   
   @media (max-width: 480px) {
+    .excl-sub{
+      font-size: 15px;
+      margin-top: 1rem;
+    }
+
     .hero-container {
       padding: 0 15px; 
       height: 700px;
@@ -251,6 +267,7 @@
   }
 
   @media (max-width: 340px) {
+    
     .hero-container {
       padding: 0 15px; 
       height: 600px;
