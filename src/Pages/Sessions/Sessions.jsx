@@ -67,7 +67,7 @@ function Sessions() {
                   smLeft={60} 
                   //img={img1} 
                   sessionName="A Peek into the Industry" 
-                  speakerName="Revealed to be soon"
+                  speakerName="To be revealed soon"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
                   bubbleText = "Gain industry insights, develop key professional skills, and explore career opportunities with expert guidance."
@@ -82,7 +82,7 @@ function Sessions() {
                   smLeft={60} 
                   //img={img2} 
                   sessionName="How to be a Public Speaker" 
-                  speakerName="Revealed to be soon"
+                  speakerName="To be revealed soon"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
                   bubbleText = "Learn to overcome presentation hurdles, build confidence, and turn nervousness into impactful communication for lasting professional growth."
@@ -97,7 +97,7 @@ function Sessions() {
                   smLeft={60} 
                   //img={img1} 
                   sessionName="Team Building Session " 
-                  speakerName="Revealed to be soon"
+                  speakerName="To be revealed soon"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
                   bubbleText = "Foster collaboration, innovation, and interpersonal skills to boost efficiency and teamwork in a vibrant setting."
@@ -112,7 +112,7 @@ function Sessions() {
                   smLeft={60} 
                   //img={img2} 
                   sessionName="What would you do?" 
-                  speakerName="Revealed to be soon"
+                  speakerName="To be revealed soon"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave}
                   bubbleText = "Gain the ability to tackle social dilemmas and make confident, thoughtful decisions."
@@ -127,7 +127,7 @@ function Sessions() {
                   smLeft={60} 
                   //img={img1} 
                   sessionName="Resume writing and Interview skills" 
-                  speakerName="Revealed to be soon"
+                  speakerName="To be revealed soon"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
                   bubbleText = "Transform your resume and interview skills, boost your confidence, and enhance your career prospects with our expert-led workshop."
@@ -142,7 +142,7 @@ function Sessions() {
                   smLeft={60} 
                   //img={img2} 
                   sessionName="How to be an Entrepreneur?" 
-                  speakerName="Revealed to be soon"
+                  speakerName="To be revealed soon"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
                   bubbleText = "Learn key techniques and strategies to turn your ideas into successful ventures in our entrepreneurship workshop."
