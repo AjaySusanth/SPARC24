@@ -32,19 +32,19 @@ function Tickets() {
           <div className="ticket t1">
             <img src={t1} className='tkt-icon' alt='tkt-icon'></img>
             <h2>IEEE MEMBERS</h2>
-            <span className='price'>₹399</span>
+            <span className='price'>₹299</span>
             <button className='reg-btn' onClick={handleRegisterClick}>Register Now↗</button>
           </div>
           <div className="ticket t3">
             <img src={t3} alt='tkt-icon' className='tkt-icon'></img>
             <h2>NON IEEE MEMBERS</h2>
-            <span className='price'>₹499</span>
+            <span className='price'>₹399</span>
             <button className='reg-btn' onClick={handleRegisterClick}>Register Now↗</button>
           </div>
           <div className="ticket t2">
             <img src={t2} alt='tkt-icon' className='tkt-icon'></img>
             <h2>NON  MACEIANS</h2>
-            <span className='price'>₹599</span>
+            <span className='price'>₹449</span>
             <button className='reg-btn' onClick={handleRegisterClick}>Register Now↗</button>
           </div>
           
