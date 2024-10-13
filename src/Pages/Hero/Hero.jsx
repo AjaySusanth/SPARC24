@@ -12,7 +12,7 @@ function Hero() {
   const navigate = useNavigate()
 
   const calculateTimeLeft = () => {
-    const eventDate = new Date('2024-10-19T08:00:00');
+    const eventDate = new Date('2024-10-20T08:00:00');
     const now = new Date();
     const difference = eventDate - now;
 
@@ -66,7 +66,7 @@ function Hero() {
     <section className='hero-container section' id='home'>
       <img src={sparcLogo} alt="SPARC" className='logo' />
       <h1 className='date'>
-        O C T <span>1 9 | 2 0</span>
+        O C T <span>2 0</span>
       </h1>
       <h1 className='excl-sub'>EXCLUSIVELY FOR FIRST YEARS.</h1>
       <button className='register-button' onClick={handleRegisterClick} >REGISTER NOW ↗ </button>
