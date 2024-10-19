@@ -52,7 +52,7 @@ function Hero() {
       aboutSection.scrollIntoView({ behavior: 'smooth' });
     }
   }; 
-  
+  /*
   const handleRegisterClick = ()=>{
     if (user) {
       navigate('/register')
@@ -60,7 +60,7 @@ function Hero() {
     else {
       navigate('/signup',{state:{toRegister:true}})
     }
-  }
+  }*/
 
   return (
     <section className='hero-container section' id='home'>
@@ -69,7 +69,7 @@ function Hero() {
         O C T <span>2 0</span>
       </h1>
       <h1 className='excl-sub'>EXCLUSIVELY FOR FIRST YEARS.</h1>
-      <button className='register-button' onClick={handleRegisterClick} >REGISTER NOW ↗ </button>
+      <button className='register-button'>REGISTRATION CLOSED</button>
       <div className='countdown'>
         <div className='time'>
           <span>{String(timeLeft.days).padStart(2, '0')}</span>
