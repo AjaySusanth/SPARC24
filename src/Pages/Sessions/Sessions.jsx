@@ -58,22 +58,6 @@ function Sessions() {
               swiperRef.current = swiper;
             }}
           >
-            
-            <SwiperSlide>
-              <div className='card-wrapper'>
-                <SessionsCard 
-                  top={-110} 
-                  left={40} 
-                  smLeft={60} 
-                  //img={img1} 
-                  sessionName="A Peek into the Industry" 
-                  speakerName="To be revealed soon"
-                  handleMouseEnter={handleMouseEnter} 
-                  handleMouseLeave={handleMouseLeave} 
-                  bubbleText = "Gain industry insights, develop key professional skills, and explore career opportunities with expert guidance."
-                />
-              </div>
-            </SwiperSlide>
             <SwiperSlide>
               <div className='card-wrapper'>
                 <SessionsCard 
@@ -82,7 +66,7 @@ function Sessions() {
                   smLeft={60} 
                   //img={img2} 
                   sessionName="How to be a Public Speaker" 
-                  speakerName="To be revealed soon"
+                  speakerName="Mr. Arjun Krish"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
                   bubbleText = "Learn to overcome presentation hurdles, build confidence, and turn nervousness into impactful communication for lasting professional growth."
@@ -96,29 +80,15 @@ function Sessions() {
                   left={40} 
                   smLeft={60} 
                   //img={img1} 
-                  sessionName="Team Building Session " 
-                  speakerName="To be revealed soon"
+                  sessionName="Building a strong professional presence" 
+                  speakerName="Mr. Ananthu Vasudev"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
-                  bubbleText = "Foster collaboration, innovation, and interpersonal skills to boost efficiency and teamwork in a vibrant setting."
+                  bubbleText  = "Learn how to craft a professional image that sets you apart,from effective networking to establishing your personal brand,and become a standout in any industry."
                 />
               </div>
             </SwiperSlide>
-            <SwiperSlide>
-              <div className='card-wrapper'>
-                <SessionsCard 
-                  top={-110} 
-                  left={40} 
-                  smLeft={60} 
-                  //img={img2} 
-                  sessionName="What would you do?" 
-                  speakerName="To be revealed soon"
-                  handleMouseEnter={handleMouseEnter} 
-                  handleMouseLeave={handleMouseLeave}
-                  bubbleText = "Gain the ability to tackle social dilemmas and make confident, thoughtful decisions."
-                />
-              </div>
-            </SwiperSlide>
+
             <SwiperSlide>
               <div className='card-wrapper'>
                 <SessionsCard 
@@ -126,26 +96,11 @@ function Sessions() {
                   left={40} 
                   smLeft={60} 
                   //img={img1} 
-                  sessionName="Resume writing and Interview skills" 
-                  speakerName="To be revealed soon"
+                  sessionName="Engineering Unplugged" 
+                  speakerName="Mr. Varghese Benny"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
-                  bubbleText = "Transform your resume and interview skills, boost your confidence, and enhance your career prospects with our expert-led workshop."
-                />
-              </div>
-            </SwiperSlide>
-            <SwiperSlide>
-              <div className='card-wrapper'>
-                <SessionsCard 
-                  top={-110} 
-                  left={40} 
-                  smLeft={60} 
-                  //img={img2} 
-                  sessionName="How to be an Entrepreneur?" 
-                  speakerName="To be revealed soon"
-                  handleMouseEnter={handleMouseEnter} 
-                  handleMouseLeave={handleMouseLeave} 
-                  bubbleText = "Learn key techniques and strategies to turn your ideas into successful ventures in our entrepreneurship workshop."
+                  bubbleText = "Discover the essential skills every engineer needs, from innovative thinking to powerful communication, and learn how to stand out in a competitive world."
                 />
               </div>
             </SwiperSlide>

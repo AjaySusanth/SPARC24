@@ -1,5 +1,5 @@
 import React from 'react';
-import './SessionsCard.css';
+import './SpeakerCard.css';
 import Card from "../../components/Card";
 import styled from 'styled-components';
 
@@ -51,7 +51,7 @@ const TextBubble = styled.div`
   }
 `;
 
-const SessionsCard = ({ top, left, smLeft, img, sessionName, speakerName, bubbleText, handleMouseEnter, handleMouseLeave }) => {
+const SpeakerCard = ({ top, left, smLeft, img, sessionName, speakerName, bubbleText, handleMouseEnter, handleMouseLeave }) => {
   return (
     <div onMouseEnter={handleMouseEnter} onMouseLeave={handleMouseLeave}>
       <Card>
@@ -74,4 +74,4 @@ const SessionsCard = ({ top, left, smLeft, img, sessionName, speakerName, bubble
   );
 };
 
-export default SessionsCard;
+export default SpeakerCard;

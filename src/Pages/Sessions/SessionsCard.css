@@ -11,7 +11,7 @@
     font-size: 1.3rem !important;
     font-family: 'Nunito Sans', sans-serif;
     font-weight: 600;
-    margin-bottom: 0.75rem;
+    margin-bottom:-0.1rem;
     text-align: center;
   }
   
@@ -19,6 +19,7 @@
     color: #5C7BF4;
     font-size: 1.1rem !important;
     font-weight: 500;
+    margin-bottom:-0.1rem;
     font-family: 'Nunito Sans', sans-serif;
   }
   
@@ -74,10 +75,12 @@
   @media (max-width: 480px) {
     .card-title {
       font-size: 1.1rem !important;
+      margin-bottom:-0.3rem;
     }
   
     .card-subtitle {
       font-size: 1rem !important;
+      margin-bottom:-0.2rem;
     }
 
   }

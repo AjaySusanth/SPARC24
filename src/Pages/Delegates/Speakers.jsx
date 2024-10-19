@@ -1,6 +1,6 @@
-import './Sessions.css';
+import './Speakers.css';
 import Heading from '../Heading/Heading';
-import SessionsCard from './SessionsCard';
+import SessionsCard from './SpeakerCard';
 import WhiteBg from '../WhiteBg/WhiteBg';
 import Rcornericon from '../RCornericon/RCornericon'
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -14,7 +14,7 @@ import sp3 from '../../assets/Images/sp 3.png';
 import 'swiper/css/autoplay';
 import { useRef } from 'react';
 
-function Delegate() {
+function Speakers() {
 
   const swiperRef = useRef(null);
 
@@ -69,7 +69,7 @@ function Delegate() {
                   smLeft={60} 
                   img={sp1}
                   speakerName="Mr. Arjun Krish"
-                  sessionName="Founder and CEO,RabbitSquare"
+                  sessionName="Faculty, Shankar IAS Academy"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
                   bubbleText = "How to be a Public Speaker?"
@@ -99,10 +99,10 @@ function Delegate() {
                   smLeft={60} 
                   img={sp3} 
                   speakerName="Mr. Varghese Benny"
-                  sessionName="Founder and CEO,RabbitSquare"
+                  sessionName="Founder and CEO, Rabbitsquare"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
-                  bubbleText = "Engineering unplugged"
+                  bubbleText = "Engineering Unplugged"
                 />
               </div>
             </SwiperSlide>
@@ -113,4 +113,4 @@ function Delegate() {
   );
 }
 
-export default Delegate;
+export default Speakers;
