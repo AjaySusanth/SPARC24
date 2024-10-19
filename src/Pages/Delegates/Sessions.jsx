@@ -31,7 +31,7 @@ function Delegate() {
   };
 
   return (
-    <section className='section' id="sessions">
+    <section className='section' id="speakers">
       <WhiteBg>
         <Rcornericon />
         <Heading text="Speakers" className="heading" />
