@@ -1,18 +1,20 @@
-import './Sessions.css';
+import './Speakers.css';
 import Heading from '../Heading/Heading';
-import SessionsCard from './SessionsCard';
+import SessionsCard from './SpeakerCard';
 import WhiteBg from '../WhiteBg/WhiteBg';
 import Rcornericon from '../RCornericon/RCornericon'
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import { Autoplay } from 'swiper/modules';
-import img1 from '../../assets/Images/Young man making a presentation.png';
-import img2 from '../../assets/Images/Young woman working on a computer.png';
+import sp1 from '../../assets/Images/sp 1.png';
+import sp2 from '../../assets/Images/sp 2.png';
+import sp3 from '../../assets/Images/sp 3.png';
+
 
 import 'swiper/css/autoplay';
 import { useRef } from 'react';
 
-function Sessions() {
+function Speakers() {
 
   const swiperRef = useRef(null);
 
@@ -29,10 +31,10 @@ function Sessions() {
   };
 
   return (
-    <section className='section' id="sessions">
+    <section className='section' id="speakers">
       <WhiteBg>
         <Rcornericon />
-        <Heading text="Sessions" className="heading" />
+        <Heading text="Speakers" className="heading" />
         <div>
           <Swiper
             modules={[Autoplay]}
@@ -58,49 +60,49 @@ function Sessions() {
               swiperRef.current = swiper;
             }}
           >
+            
             <SwiperSlide>
               <div className='card-wrapper'>
                 <SessionsCard 
                   top={-110} 
                   left={40} 
                   smLeft={60} 
-                  //img={img2} 
-                  sessionName="How to be a Public Speaker" 
+                  img={sp1}
                   speakerName="Mr. Arjun Krish"
+                  sessionName="Faculty, Shankar IAS Academy"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
-                  bubbleText = "Learn to overcome presentation hurdles, build confidence, and turn nervousness into impactful communication for lasting professional growth."
+                  bubbleText = "How to be a Public Speaker?"
                 />
               </div>
             </SwiperSlide>
             <SwiperSlide>
-              <div className='card-wrapper'>
+            <div className='card-wrapper'>
                 <SessionsCard 
                   top={-110} 
                   left={40} 
                   smLeft={60} 
-                  //img={img1} 
-                  sessionName="Building a strong professional presence" 
+                  img={sp2} 
                   speakerName="Mr. Ananthu Vasudev"
+                  sessionName="Founder and Chief Learning Officer,The Evolving Project"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
-                  bubbleText  = "Learn how to craft a professional image that sets you apart,from effective networking to establishing your personal brand,and become a standout in any industry."
+                  bubbleText = "Building a strong professional presence"
                 />
               </div>
             </SwiperSlide>
-
             <SwiperSlide>
-              <div className='card-wrapper'>
+            <div className='card-wrapper'>
                 <SessionsCard 
                   top={-110} 
                   left={40} 
                   smLeft={60} 
-                  //img={img1} 
-                  sessionName="Engineering Unplugged" 
+                  img={sp3} 
                   speakerName="Mr. Varghese Benny"
+                  sessionName="Founder and CEO, Rabbitsquare"
                   handleMouseEnter={handleMouseEnter} 
                   handleMouseLeave={handleMouseLeave} 
-                  bubbleText = "Discover the essential skills every engineer needs, from innovative thinking to powerful communication, and learn how to stand out in a competitive world."
+                  bubbleText = "Engineering Unplugged"
                 />
               </div>
             </SwiperSlide>
@@ -111,4 +113,4 @@ function Sessions() {
   );
 }
 
-export default Sessions;
+export default Speakers;

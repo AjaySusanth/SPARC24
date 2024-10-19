@@ -1,0 +1,98 @@
+.delegate-card-content {
+  margin-top: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.delegate-card-title {
+  color: white;
+  font-size: 1.rem !important;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.75rem;
+  text-align: center;
+  width:100%;
+}
+
+.delegate-card-subtitle {
+  color: #5C7BF4;
+  font-size: 1rem !important;
+  font-weight: 600;
+  margin:-1px;
+  text-align: center;
+  font-family: 'Nunito Sans', sans-serif;
+}
+
+.dp{
+  min-width:60%;
+  max-width:70%;
+  margin:-10px 0;
+  padding:0;
+  border-radius: 50%;
+  border: 2px solid #74758D;
+  /* box-shadow:2px 2cap 5rem rgba(0, 0, 255, 0.422); */
+  background-color: transparent;
+}
+
+/*.card-footer {
+  position: relative;
+  margin-bottom: 15px;
+}
+
+.illustration-image {
+  width: 60px;
+  height: auto;
+  position: relative;
+  margin-left: 1rem;
+}
+.btn-container::before {
+  content: "";
+  position: absolute;
+  top: -80px; 
+  left: -45px; 
+  width: 100px; 
+  height: 130px; 
+  background-image: url('../../assets/Images/Young woman working on a computer.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  z-index: 1;
+
+}
+
+.card-btn{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  padding: 0.1rem 1rem;
+  margin:0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+.btn-text{
+  text-transform: uppercase;
+  color: black;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.btn-icon{
+  font-size: 1.3rem;
+  color:black;
+}
+*/
+
+@media (max-width: 480px) {
+  .delegate-card-title {
+    font-size: 1.1rem !important;
+  }
+
+  .delegate-card-subtitle {
+    font-size: 0.8rem !important;
+  }
+
+}
