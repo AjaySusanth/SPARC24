@@ -72,19 +72,19 @@ function Hero() {
       <button className='register-button'>REGISTRATION CLOSED</button>
       <div className='countdown'>
         <div className='time'>
-          <span>{String(timeLeft.days).padStart(2, '0')}</span>
+          <span>00</span>
           <p>Days</p>
         </div>
         <div className='time'>
-          <span>{String(timeLeft.hours).padStart(2, '0')}</span>
+          <span>00</span>
           <p>Hours</p>
         </div>
         <div className='time'>
-          <span>{String(timeLeft.minutes).padStart(2, '0')}</span>
+          <span>00</span>
           <p>Minutes</p>
         </div>
         <div className='time'>
-          <span>{String(timeLeft.seconds).padStart(2, '0')}</span>
+          <span>00</span>
           <p>Seconds</p>
         </div>
       </div>
