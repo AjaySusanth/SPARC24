@@ -11,6 +11,7 @@ import Sponsers from "../Sponsers/Sponsers"
 import Tickets from "../Tickets/Tickets"
 import './Home.css'
 import Loader from "../../components/Loader/Loader"
+import Speakers from "../Delegates/Speakers"
 
 const Home = () => {
 
@@ -34,6 +35,7 @@ const Home = () => {
         <Highlights/>
         <Memories/>
         <Sessions/>
+        <Speakers/>
         <Sponsers/>
         <AppFooter/>
     </div>
