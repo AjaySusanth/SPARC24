@@ -37,6 +37,7 @@ function Timeline() {
           showThumbs={false}
           showStatus={false}
           infiniteLoop={true}
+          showIndicators={false}
           autoPlay={false}
           emulateTouch={true}
           swipeable={true} // Enable swiping but control touch movement
@@ -60,12 +61,8 @@ function Timeline() {
           }
         >
           <div>
-            <h2 className='timeline-date'>October 19</h2>
+            {/**<h2 className='timeline-date'>October 19</h2>**/}
             <OppositeContentTimeline />
-          </div>
-          <div>
-            <h2 className='timeline-date'>October 20</h2>
-            <OppositeContentTimeline2 />
           </div>
         </Carousel>
       </WhiteBg>

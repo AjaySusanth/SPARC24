@@ -14,9 +14,9 @@
   background: none; /* Remove background */
 }
 
-.carousel .control-dots .dot {
-  background-color: #5C7BF4; /* Customize dot color */
-}
+/**.carousel .control-dots .dot {
+  background-color: #5C7BF4; 
+}**/
 
 /* Custom Arrow Styles */
 .custom-arrow {
