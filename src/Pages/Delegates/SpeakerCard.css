@@ -87,6 +87,10 @@
 */
 
 @media (max-width: 480px) {
+  .delegate-card-content {
+    margin-top: 1.2rem;
+  }
+
   .delegate-card-title {
     font-size: 1.1rem !important;
   }
@@ -94,5 +98,4 @@
   .delegate-card-subtitle {
     font-size: 0.8rem !important;
   }
-
 }
