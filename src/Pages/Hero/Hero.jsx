@@ -12,7 +12,7 @@ function Hero() {
   const navigate = useNavigate()
 
   const calculateTimeLeft = () => {
-    const eventDate = new Date('2024-10-20T08:00:00');
+    const eventDate = new Date('2024-10-20T08:30:00');
     const now = new Date();
     const difference = eventDate - now;
 

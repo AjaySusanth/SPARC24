@@ -12,6 +12,7 @@ import Tickets from "../Tickets/Tickets"
 import './Home.css'
 import Loader from "../../components/Loader/Loader"
 import Speakers from "../Delegates/Speakers"
+import Timeline from "../Timeline/Timeline"
 
 const Home = () => {
 
@@ -34,6 +35,7 @@ const Home = () => {
         <Tickets/>
         <Highlights/>
         <Memories/>
+        <Timeline/>
         <Sessions/>
         <Speakers/>
         <Sponsers/>
