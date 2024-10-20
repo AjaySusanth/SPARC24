@@ -72,23 +72,13 @@ export default function OppositeContentTimeline() {
     <Timeline position="alternate">
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          08:00 am
+          08:30 am
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>Inauguration</TimelineContent>
-      </TimelineItem>
-      <TimelineItem>
-        <TimelineOppositeContent style={styles.textStyle}>
-          8:30 am
-        </TimelineOppositeContent>
-        <TimelineSeparator>
-          <TimelineDot style={styles.dotStyle} />
-          <TimelineConnector style={styles.connectorStyle} />
-        </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>Ice Breaking</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Registration</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
@@ -98,86 +88,96 @@ export default function OppositeContentTimeline() {
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
+        <TimelineContent style={styles.textStyle}>Inagural Ceremony</TimelineContent>
+      </TimelineItem>
+      <TimelineItem>
+        <TimelineOppositeContent style={styles.textStyle}>
+          09:30 am
+        </TimelineOppositeContent>
+        <TimelineSeparator>
+          <TimelineDot style={styles.dotStyle} />
+          <TimelineConnector style={styles.connectorStyle} />
+        </TimelineSeparator>
         <TimelineContent style={styles.textStyle}>Session 1</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          10:30 am
+          10:35 am
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>To be announced</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Ice Breaking Session</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          11:30 am
+          11:40 am
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>To be announced</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Session 2</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          01:30 pm
+          12:45 pm
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>To be announced</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Lunch Break</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          02:30 pm
+          01:40 pm
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>To be announced</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Session 3 </TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          04:30 pm
+          02:45 pm
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>To be announced</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Captchaah</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          6:30 am
+          04:20 pm
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>To be announced</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Tea Break</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          07:30 pm
+          04:55 pm
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
           <TimelineConnector style={styles.connectorStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>To be announced</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Culturals</TimelineContent>
       </TimelineItem>
       <TimelineItem>
         <TimelineOppositeContent style={styles.textStyle}>
-          08:30 pm
+          06:00 pm
         </TimelineOppositeContent>
         <TimelineSeparator>
           <TimelineDot style={styles.dotStyle} />
         </TimelineSeparator>
-        <TimelineContent style={styles.textStyle}>To be announced</TimelineContent>
+        <TimelineContent style={styles.textStyle}>Closing Ceremony</TimelineContent>
       </TimelineItem>
     </Timeline>
   );

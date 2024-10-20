@@ -32,16 +32,16 @@ function Highlights() {
         </p>
         <div className="highlights-content">
           <div className="highlight-item">
-            <span className="item-no"><AnimatedNumber value={4} inView={inView} /></span>
+            <span className="item-no"><AnimatedNumber value={2} inView={inView} /></span>
             <span className="item-name">SESSIONS</span>
           </div>
           <div className="highlight-item">
-            <span className="item-no"><AnimatedNumber value={3} inView={inView} /></span>
-            <span className="item-name">WORKSHOPS</span>
+            <span className="item-no"><AnimatedNumber value={1} inView={inView} /></span>
+            <span className="item-name">WORKSHOP</span>
           </div>
           <div className="highlight-item">
             <span className="item-no"><AnimatedNumber value={1} inView={inView} /></span>
-            <span className="item-name">COMPETITIONS</span>
+            <span className="item-name">COMPETITION</span>
           </div>
           <div className="highlight-item">
             <span className="item-no"><AnimatedNumber value={1} inView={inView} /></span>
